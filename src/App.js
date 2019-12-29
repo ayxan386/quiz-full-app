@@ -1,7 +1,10 @@
 import React from "react";
 import Question from "./components/Question";
+import ChangeButton from "./components/ChangeButton";
+import Answer from "./components/Answer";
 // import ErrorDisplay from "./components/ErrorDisplay";
-import bms from "./css/bootstrap.min.css";
+import "./css/bootstrap.min.css";
+import "./css/main.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -56,41 +59,38 @@ class App extends React.Component {
     let current_question = this.state.questions[this.state.current_index];
     return (
       <div className='App w-100 h-100 jumbotron' style={{ display: "flex" }}>
-        <div className='container col-md-8 col-sm-10 align-items-center justify-items-center flex-column'>
-          <div className='row'>
-            <div
-              className='col-3 justify-content-center align-content-center flex-md-column'
-              style={{ display: "flex" }}>
-              <button
-                onClick={() => {
-                  this.previouse_question();
-                }}
-                className='w-50'>
-                LEFT
-              </button>
+        <div className='main-area'>
+          <div className='question-container'>
+            <Question question_text={current_question.text}></Question>
+          </div>
+
+          <div className='answers-container'>
+            {/* Previouse button */}
+            <ChangeButton
+              event={this.previouse_question}
+              addClassName='justify-left'
+              buttonClass='arrow left-arrow'></ChangeButton>
+            {/* Holds answers */}
+            <div className='answers-holder'>
+              {current_question.ans.map((a, i) => {
+                return (
+                  <Answer
+                    key={i * 62}
+                    answer={a}
+                    index={i}
+                    id={current_question.id}
+                    submitted={this.change}
+                    selected={
+                      this.state.user_ans[current_question.id]
+                    }></Answer>
+                );
+              })}
             </div>
-            <div className='col-6'>
-              {
-                <Question
-                  key={current_question.id}
-                  id={current_question.id}
-                  selected={this.state.user_ans[current_question.id]}
-                  question_text={current_question.text}
-                  ans={current_question.ans}
-                  submitted={this.change}></Question>
-              }
-            </div>
-            <div
-              className='col-3 justify-content-center align-content-center flex-md-column'
-              style={{ display: "flex" }}>
-              <button
-                onClick={() => {
-                  this.next_question();
-                }}
-                className='w-50'>
-                RIGHT
-              </button>
-            </div>
+
+            <ChangeButton
+              event={this.next_question}
+              addClassName='self-justify-right'
+              buttonClass='arrow right-arrow'></ChangeButton>
           </div>
         </div>
       </div>
