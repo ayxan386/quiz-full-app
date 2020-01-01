@@ -2,31 +2,32 @@ import React from "react";
 import Question from "./components/Question";
 import ChangeButton from "./components/ChangeButton";
 import Answer from "./components/Answer";
+import SubmitButton from "./components/SubmitButton";
 // import ErrorDisplay from "./components/ErrorDisplay";
 import "./css/bootstrap.min.css";
 import "./css/main.css";
+import Axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      questions: [
-        {
-          id: 1,
-          text: "question 1",
-          ans: [1, 2, 3, 4]
-        },
-        {
-          id: 2,
-          text: "question 2",
-          ans: ["a", "b", "c", "d"]
-        }
-      ],
+      questions: [],
       user_ans: {},
       current_index: 0,
       err: ""
     };
+  }
+
+  componentDidMount() {
+    Axios.get(
+      "https://aykhan-quiz-app-backend.herokuapp.com/api/question"
+    ).then(res => {
+      this.setState({
+        questions: res.data
+      });
+    });
   }
 
   change = (question_id, ans_number) => {
@@ -55,13 +56,32 @@ class App extends React.Component {
     }
   };
 
+  submitFunc = () => {
+    let answ = Object.keys(this.state.user_ans).map(question_id => {
+      return {
+        question_id,
+        answer_number: this.state.user_ans[question_id]
+      };
+    });
+
+    Axios.post("https://aykhan-quiz-app-backend.herokuapp.com/api/check", {
+      anws: answ,
+      ans_weight: 1
+    }).then(res => {
+      alert(res.data);
+    });
+  };
+
   render() {
     let current_question = this.state.questions[this.state.current_index];
+
     return (
       <div className='App w-100 h-100 jumbotron' style={{ display: "flex" }}>
         <div className='main-area'>
           <div className='question-container'>
-            <Question question_text={current_question.text}></Question>
+            {current_question !== undefined ? (
+              <Question question_text={current_question.question}></Question>
+            ) : null}
           </div>
 
           <div className='answers-container'>
@@ -72,19 +92,21 @@ class App extends React.Component {
               buttonClass='arrow left-arrow'></ChangeButton>
             {/* Holds answers */}
             <div className='answers-holder'>
-              {current_question.ans.map((a, i) => {
-                return (
-                  <Answer
-                    key={i * 62}
-                    answer={a}
-                    index={i}
-                    id={current_question.id}
-                    submitted={this.change}
-                    selected={
-                      this.state.user_ans[current_question.id]
-                    }></Answer>
-                );
-              })}
+              {current_question !== undefined
+                ? current_question.options.map((a, i) => {
+                    return (
+                      <Answer
+                        key={i * 62}
+                        answer={a.content}
+                        index={i}
+                        id={current_question.id}
+                        submitted={this.change}
+                        selected={
+                          this.state.user_ans[current_question.id]
+                        }></Answer>
+                    );
+                  })
+                : null}
             </div>
 
             <ChangeButton
@@ -92,6 +114,7 @@ class App extends React.Component {
               addClassName='self-justify-right'
               buttonClass='arrow right-arrow'></ChangeButton>
           </div>
+          <SubmitButton submitFunc={() => this.submitFunc()}></SubmitButton>
         </div>
       </div>
     );
