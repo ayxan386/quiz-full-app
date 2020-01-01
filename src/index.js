@@ -1,5 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Router from "./components/Router.js";
+import { MyRouter } from "./components/Router.js";
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(<Router />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <MyRouter />
+  </BrowserRouter>,
+  document.getElementById("root")
+);

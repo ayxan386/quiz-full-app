@@ -1,11 +1,10 @@
 import React from "react";
-import Question from "./components/Question";
-import ChangeButton from "./components/ChangeButton";
-import Answer from "./components/Answer";
-import SubmitButton from "./components/SubmitButton";
-// import ErrorDisplay from "./components/ErrorDisplay";
-import "./css/bootstrap.min.css";
-import "./css/main.css";
+import Question from "./Question";
+import ChangeButton from "./ChangeButton";
+import Answer from "./Answer";
+import SubmitButton from "./SubmitButton";
+import "../css/bootstrap.min.css";
+import "../css/main.css";
 import Axios from "axios";
 
 class App extends React.Component {

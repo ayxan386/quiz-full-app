@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import ChangeButton from "./ChangeButton";
-import Answer from "./Answer";
-import main from "../css/main.css";
+import "../css/main.css";
 
 export class Question extends Component {
   render() {
