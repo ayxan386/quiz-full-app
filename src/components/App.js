@@ -6,6 +6,7 @@ import SubmitButton from "./SubmitButton";
 import "../css/bootstrap.min.css";
 import "../css/main.css";
 import Axios from "axios";
+import Helmet from "react-helmet";
 
 class App extends React.Component {
   constructor(props) {
@@ -75,47 +76,52 @@ class App extends React.Component {
     let current_question = this.state.questions[this.state.current_index];
 
     return (
-      <div className='App w-100 h-100 jumbotron' style={{ display: "flex" }}>
-        <div className='main-area'>
-          <div className='question-container'>
-            {current_question !== undefined ? (
-              <Question question_text={current_question.question}></Question>
-            ) : null}
-          </div>
-
-          <div className='answers-container'>
-            {/* Previouse button */}
-            <ChangeButton
-              event={this.previouse_question}
-              addClassName='justify-left'
-              buttonClass='arrow left-arrow'></ChangeButton>
-            {/* Holds answers */}
-            <div className='answers-holder'>
-              {current_question !== undefined
-                ? current_question.options.map((a, i) => {
-                    return (
-                      <Answer
-                        key={i * 62}
-                        answer={a.content}
-                        index={i}
-                        id={current_question.id}
-                        submitted={this.change}
-                        selected={
-                          this.state.user_ans[current_question.id]
-                        }></Answer>
-                    );
-                  })
-                : null}
+      <>
+        <Helmet>
+          <title>Test Page</title>
+        </Helmet>
+        <div className='App w-100 h-100 jumbotron' style={{ display: "flex" }}>
+          <div className='main-area'>
+            <div className='question-container'>
+              {current_question !== undefined ? (
+                <Question question_text={current_question.question}></Question>
+              ) : null}
             </div>
 
-            <ChangeButton
-              event={this.next_question}
-              addClassName='self-justify-right'
-              buttonClass='arrow right-arrow'></ChangeButton>
+            <div className='answers-container'>
+              {/* Previouse button */}
+              <ChangeButton
+                event={this.previouse_question}
+                addClassName='justify-left'
+                buttonClass='arrow left-arrow'></ChangeButton>
+              {/* Holds answers */}
+              <div className='answers-holder'>
+                {current_question !== undefined
+                  ? current_question.options.map((a, i) => {
+                      return (
+                        <Answer
+                          key={i * 62}
+                          answer={a.content}
+                          index={i}
+                          id={current_question.id}
+                          submitted={this.change}
+                          selected={
+                            this.state.user_ans[current_question.id]
+                          }></Answer>
+                      );
+                    })
+                  : null}
+              </div>
+
+              <ChangeButton
+                event={this.next_question}
+                addClassName='self-justify-right'
+                buttonClass='arrow right-arrow'></ChangeButton>
+            </div>
+            <SubmitButton submitFunc={() => this.submitFunc()}></SubmitButton>
           </div>
-          <SubmitButton submitFunc={() => this.submitFunc()}></SubmitButton>
         </div>
-      </div>
+      </>
     );
   }
 }

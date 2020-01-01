@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/form.css";
+import Helmet from "react-helmet";
 
 export class Register extends Component {
   constructor(props) {
@@ -50,45 +51,50 @@ export class Register extends Component {
 
   render() {
     return (
-      <div className='d-flex justify-content-center h-auto p-4'>
-        <div className='jumbotron w-25 min-width'>
-          <form>
-            <legend className='p-3'>User information</legend>
-            <div className='form-group'>
-              <label htmlFor='name'>Name: </label>
-              <input
-                name='name'
-                type='text'
-                onChange={this.updateMe}
-                className='form-control'></input>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='email'>Email: </label>
-              <input
-                name='email'
-                type='email'
-                onChange={this.updateMe}
-                className='form-control'></input>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='password'>Password: </label>
-              <input
-                name='password'
-                type='password'
-                onChange={this.updateMe}
-                className={`form-control ${this.state.isStrong}`}></input>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='cpassword'>Confirm Password: </label>
-              <input
-                name='cpassword'
-                type='password'
-                onChange={this.updateMe}
-                className={`form-control ${this.state.isMathcing}`}></input>
-            </div>
-          </form>
+      <>
+        <Helmet>
+          <title>Registration Page</title>
+        </Helmet>
+        <div className='d-flex justify-content-center h-auto p-4'>
+          <div className='jumbotron w-25 min-width'>
+            <form>
+              <legend className='p-3'>User information</legend>
+              <div className='form-group'>
+                <label htmlFor='name'>Name: </label>
+                <input
+                  name='name'
+                  type='text'
+                  onChange={this.updateMe}
+                  className='form-control'></input>
+              </div>
+              <div className='form-group'>
+                <label htmlFor='email'>Email: </label>
+                <input
+                  name='email'
+                  type='email'
+                  onChange={this.updateMe}
+                  className='form-control'></input>
+              </div>
+              <div className='form-group'>
+                <label htmlFor='password'>Password: </label>
+                <input
+                  name='password'
+                  type='password'
+                  onChange={this.updateMe}
+                  className={`form-control ${this.state.isStrong}`}></input>
+              </div>
+              <div className='form-group'>
+                <label htmlFor='cpassword'>Confirm Password: </label>
+                <input
+                  name='cpassword'
+                  type='password'
+                  onChange={this.updateMe}
+                  className={`form-control ${this.state.isMathcing}`}></input>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
