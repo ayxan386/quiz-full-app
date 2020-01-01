@@ -91,6 +91,9 @@ export class Register extends Component {
                   onChange={this.updateMe}
                   className={`form-control ${this.state.isMathcing}`}></input>
               </div>
+              <button type='submit' className='btn btn-primary'>
+                Register
+              </button>
             </form>
           </div>
         </div>
