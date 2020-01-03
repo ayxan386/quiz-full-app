@@ -4,7 +4,9 @@ export class SubmitButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.submitFunc}>FINISH TEST</button>
+        <button onClick={this.props.submitFunc} className='btn btn-dark'>
+          FINISH TEST
+        </button>
       </div>
     );
   }

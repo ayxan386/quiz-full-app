@@ -1,0 +1,11 @@
+export const NEXT_QUESTION = "NEXT_QUESTION";
+
+export const PREV_QUESTION = "PREV_QUESTION";
+
+export const LOAD_QUESTIONS = "LOAD_QUESTIONS";
+
+export const SHOW_LOADER = "SHOW_LOADER";
+
+export const RECEIVED_RESULTS = "RECEIVED_RESULTS";
+
+export const ADD_ANSWER = "ADD_ANSWER";

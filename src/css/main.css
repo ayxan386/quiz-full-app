@@ -32,7 +32,8 @@ html,
 
 .main-area .question-container .question-header {
   background-color: #d1d1d1;
-  padding: 4rem 14rem;
+  background-origin: border-box;
+  padding: 4rem 10rem;
   max-width: 720px;
   width: 100%;
   border: 1px solid #d0d0d0;
