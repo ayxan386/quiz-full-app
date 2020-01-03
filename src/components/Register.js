@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "../css/form.css";
 import Helmet from "react-helmet";
+import { register_user } from "../reducers/reducerActions";
+import { connect } from "react-redux";
 
 export class Register extends Component {
   constructor(props) {
@@ -49,6 +51,12 @@ export class Register extends Component {
     });
   };
 
+  sendData = e => {
+    e.preventDefault();
+    const { name, password, email } = this.state;
+    this.props.register(name, email, password, true);
+  };
+
   render() {
     return (
       <>
@@ -57,7 +65,7 @@ export class Register extends Component {
         </Helmet>
         <div className='d-flex justify-content-center h-auto p-4'>
           <div className='jumbotron w-25 min-width'>
-            <form>
+            <form onSubmit={this.sendData}>
               <legend className='p-3'>User information</legend>
               <div className='form-group'>
                 <label htmlFor='name'>Name: </label>
@@ -102,4 +110,11 @@ export class Register extends Component {
   }
 }
 
-export default Register;
+const mapDispatchToProps = distapch => {
+  return {
+    register: (username, email, password, isMaker) =>
+      distapch(register_user(username, email, password, isMaker))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Register);

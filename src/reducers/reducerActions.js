@@ -4,7 +4,8 @@ import {
   LOAD_QUESTIONS,
   RECEIVED_RESULTS,
   SHOW_LOADER,
-  ADD_ANSWER
+  ADD_ANSWER,
+  LOGIN_USER
 } from "./reducer-consts";
 import Axios from "axios";
 export const next_question = () => {
@@ -73,6 +74,34 @@ export const submitAnswer = () => {
       ans_weight: 1
     }).then(res => {
       dispatch(results_received(res.data));
+    });
+  };
+};
+
+export const register_user = (username, email, password, isMaker) => {
+  return dispatch => {
+    Axios.post("https://aykhan-quiz-app-backend.herokuapp.com/register", {
+      name: username,
+      pass: password,
+      isMaker: isMaker
+    }).then(data => {
+      console.log(data);
+      if (data.data.message.includes("OK")) window.location.replace("/login");
+    });
+  };
+};
+
+export const login_user = (username, password) => {
+  return dispatch => {
+    Axios.post("https://aykhan-quiz-app-backend.herokuapp.com/login", {
+      name: username,
+      pass: password
+    }).then(data => {
+      console.log(data.data);
+      dispatch({
+        type: LOGIN_USER,
+        payload: data.data.token
+      });
     });
   };
 };

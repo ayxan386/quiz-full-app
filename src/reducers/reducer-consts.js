@@ -9,3 +9,7 @@ export const SHOW_LOADER = "SHOW_LOADER";
 export const RECEIVED_RESULTS = "RECEIVED_RESULTS";
 
 export const ADD_ANSWER = "ADD_ANSWER";
+
+export const LOGIN_USER = "LOGIN_USER";
+
+export const REGISTER_USER = "REGISTER_USER";
