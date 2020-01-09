@@ -1,9 +1,4 @@
-import Axios from "axios";
-import {
-  LOAD_QUESTIONS,
-  SHOW_LOADER,
-  RECEIVED_RESULTS
-} from "./reducer-consts";
+import { LOAD_QUESTIONS, SHOW_LOADER } from "./reducer-consts";
 
 const init_state = {
   currentIndex: 0,

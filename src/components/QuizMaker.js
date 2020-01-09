@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import QuestionAdder from "./QuestionAdder";
 import { addQuestion } from "../reducers/reducerActions";
 import SmallQuestion from "./SmallQuestion";
+import "../css/bootstrap.min.css";
+import "../css/main.css";
 
 export class QuizMaker extends Component {
   constructor(props) {
@@ -32,21 +34,29 @@ export class QuizMaker extends Component {
         <Helmet>
           <title>Make a Quiz</title>
         </Helmet>
-        <div id='question-holder'>
-          {this.props.questions.map(question => (
-            <SmallQuestion
-              question={question.question}
-              anss={question.options}></SmallQuestion>
-          ))}
-        </div>
-        <div id='question-adding'>
-          {!this.state.isAdding ? (
-            <button onClick={() => this.addQuestion()}>Add new Question</button>
-          ) : (
-            <QuestionAdder
-              remove={this.removeQuestionAdder}
-              addQuestion={this.props.question_add}></QuestionAdder>
-          )}
+        <div className='jumbotron h-100'>
+          <div id='question-holder'>
+            {this.props.questions.map(question => (
+              <SmallQuestion
+                question={question.question}
+                anss={question.options}></SmallQuestion>
+            ))}
+          </div>
+          <div
+            id='question-adding'
+            className='align-items-center justify-content-center row'>
+            {!this.state.isAdding ? (
+              <button
+                onClick={() => this.addQuestion()}
+                className='btn btn-success'>
+                Add new Question
+              </button>
+            ) : (
+              <QuestionAdder
+                remove={this.removeQuestionAdder}
+                addQuestion={this.props.question_add}></QuestionAdder>
+            )}
+          </div>
         </div>
       </>
     );

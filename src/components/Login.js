@@ -24,6 +24,7 @@ export class Login extends Component {
     e.preventDefault();
     const { name, password } = this.state;
     this.props.login(name, password);
+    window.location = "/ss";
   };
 
   render() {
