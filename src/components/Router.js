@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import App from "./App";
 import Register from "./Register";
 import Login from "./Login";
+import QuizMaker from "./QuizMaker";
 
 export class MyRouter extends Component {
   render() {
@@ -16,6 +17,9 @@ export class MyRouter extends Component {
         </Route>
         <Route path='/login**'>
           <Login></Login>
+        </Route>
+        <Route path='/ss**'>
+          <QuizMaker></QuizMaker>
         </Route>
       </Switch>
     );

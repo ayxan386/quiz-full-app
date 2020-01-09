@@ -5,7 +5,8 @@ import {
   RECEIVED_RESULTS,
   SHOW_LOADER,
   ADD_ANSWER,
-  LOGIN_USER
+  LOGIN_USER,
+  ADD_QUESTION
 } from "./reducer-consts";
 import Axios from "axios";
 export const next_question = () => {
@@ -103,5 +104,12 @@ export const login_user = (username, password) => {
         payload: data.data.token
       });
     });
+  };
+};
+
+export const addQuestion = question => {
+  return {
+    type: ADD_QUESTION,
+    payload: question
   };
 };

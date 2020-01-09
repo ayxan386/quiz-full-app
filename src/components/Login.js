@@ -19,11 +19,13 @@ export class Login extends Component {
     temp_obj[key] = source.target.value;
     this.setState(temp_obj);
   };
+
   login = e => {
     e.preventDefault();
     const { name, password } = this.state;
     this.props.login(name, password);
   };
+
   render() {
     return (
       <>
