@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "../css/form.css";
+import "../../css/form.css";
 import Helmet from "react-helmet";
-import { login_user } from "../reducers/reducerActions";
+import { login_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
-import { checkAuthFrom } from "../middlewares/IsAuth";
+import { checkAuthFrom } from "../../middlewares/IsAuth";
 
 export class Login extends Component {
   constructor(props) {

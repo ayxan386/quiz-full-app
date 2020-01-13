@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import App from "./App";
-import Register from "./Register";
-import Login from "./Login";
+import Register from "./auth/Register";
+import Login from "./auth/Login";
 import QuizMaker from "./QuizMaker";
 
 export class MyRouter extends Component {

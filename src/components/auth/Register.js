@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../css/form.css";
+import "../../css/form.css";
 import Helmet from "react-helmet";
-import { register_user } from "../reducers/reducerActions";
+import { register_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
 
 export class Register extends Component {
