@@ -17,3 +17,5 @@ export const REGISTER_USER = "REGISTER_USER";
 export const RECEIVE_SUBJECT_VALIDITY = "RECEIVE_SUBJECT_VALIDITY";
 
 export const ADD_QUESTION = "ADD_QUESTION";
+
+export const ERROR = "ERROR";
