@@ -36,10 +36,10 @@ export class Login extends Component {
           <Helmet>
             <title>Login Page</title>
           </Helmet>
-          <div className='d-flex justify-content-center h-auto p-4'>
-            <div className='jumbotron w-25 min-width'>
+          <div className='row p-4 h-100'>
+            <div className='jumbotron w-25 min-width m-auto'>
               <form onSubmit={this.login}>
-                <legend className='p-3'>Login form</legend>
+                <legend className='font-weight-bolder'>Login form</legend>
                 <div className='form-group'>
                   <label htmlFor='name'>Please enter your name: </label>
                   <input
@@ -56,9 +56,11 @@ export class Login extends Component {
                     onChange={this.updateMe}
                     className={`form-control`}></input>
                 </div>
-                <button type='submit' className='btn btn-primary'>
-                  LOGIN
-                </button>
+                <div className='row m-auto'>
+                  <button type='submit' className='btn btn-primary'>
+                    LOGIN
+                  </button>
+                </div>
                 {this.props.err.length > 0 ? (
                   <div>
                     <p className=''>{this.props.err}</p>
