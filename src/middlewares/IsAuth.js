@@ -7,10 +7,8 @@ const checkAuth = token => {
 };
 
 export const checkAuthFrom = token => {
-  console.log("got called with " + token);
-
   const flag = token && token.length > 0;
-  if (flag) return <Redirect to='/ss'></Redirect>;
+  if (flag) return <Redirect to='/index'></Redirect>;
   return null;
 };
 

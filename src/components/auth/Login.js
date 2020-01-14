@@ -3,6 +3,7 @@ import "../../css/form.css";
 import Helmet from "react-helmet";
 import { login_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { checkAuthFrom } from "../../middlewares/IsAuth";
 
 export class Login extends Component {
@@ -66,6 +67,9 @@ export class Login extends Component {
                     <p className=''>{this.props.err}</p>
                   </div>
                 ) : null}
+                <div>
+                  <Link to='/register'>Register here</Link>
+                </div>
               </form>
             </div>
           </div>
@@ -76,8 +80,6 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-
   return {
     err: state.error.err,
     token: state.auth.token

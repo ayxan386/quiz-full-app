@@ -3,6 +3,7 @@ import "../../css/form.css";
 import Helmet from "react-helmet";
 import { register_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 export class Register extends Component {
   constructor(props) {
@@ -56,56 +57,61 @@ export class Register extends Component {
     const { name, password, email } = this.state;
     this.props.register(name, email, password, true);
   };
+  checkToken = () => {
+    return this.props.token && this.props.token.length > 0;
+  };
 
   render() {
     return (
-      <>
-        <Helmet>
-          <title>Registration Page</title>
-        </Helmet>
-        <div className='d-flex justify-content-center h-auto p-4'>
-          <div className='jumbotron w-25 min-width'>
-            <form onSubmit={this.sendData}>
-              <legend className='p-3'>User information</legend>
-              <div className='form-group'>
-                <label htmlFor='name'>Name: </label>
-                <input
-                  name='name'
-                  type='text'
-                  onChange={this.updateMe}
-                  className='form-control'></input>
-              </div>
-              <div className='form-group'>
-                <label htmlFor='email'>Email: </label>
-                <input
-                  name='email'
-                  type='email'
-                  onChange={this.updateMe}
-                  className='form-control'></input>
-              </div>
-              <div className='form-group'>
-                <label htmlFor='password'>Password: </label>
-                <input
-                  name='password'
-                  type='password'
-                  onChange={this.updateMe}
-                  className={`form-control ${this.state.isStrong}`}></input>
-              </div>
-              <div className='form-group'>
-                <label htmlFor='cpassword'>Confirm Password: </label>
-                <input
-                  name='cpassword'
-                  type='password'
-                  onChange={this.updateMe}
-                  className={`form-control ${this.state.isMathcing}`}></input>
-              </div>
-              <button type='submit' className='btn btn-primary'>
-                Register
-              </button>
-            </form>
+      this.checkToken() || (
+        <>
+          <Helmet>
+            <title>Registration Page</title>
+          </Helmet>
+          <div className='d-flex justify-content-center h-auto p-4'>
+            <div className='jumbotron w-25 min-width'>
+              <form onSubmit={this.sendData}>
+                <legend className='p-3'>User information</legend>
+                <div className='form-group'>
+                  <label htmlFor='name'>Name: </label>
+                  <input
+                    name='name'
+                    type='text'
+                    onChange={this.updateMe}
+                    className='form-control'></input>
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='email'>Email: </label>
+                  <input
+                    name='email'
+                    type='email'
+                    onChange={this.updateMe}
+                    className='form-control'></input>
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='password'>Password: </label>
+                  <input
+                    name='password'
+                    type='password'
+                    onChange={this.updateMe}
+                    className={`form-control ${this.state.isStrong}`}></input>
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='cpassword'>Confirm Password: </label>
+                  <input
+                    name='cpassword'
+                    type='password'
+                    onChange={this.updateMe}
+                    className={`form-control ${this.state.isMathcing}`}></input>
+                </div>
+                <button type='submit' className='btn btn-primary'>
+                  Register
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </>
+        </>
+      )
     );
   }
 }
@@ -117,4 +123,10 @@ const mapDispatchToProps = distapch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Register);
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

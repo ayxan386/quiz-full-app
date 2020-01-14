@@ -15,6 +15,9 @@ export const next_question = () => {
     type: NEXT_QUESTION
   };
 };
+const source = "aykhan-quiz-app-backend.herokuapp.com";
+const AUTH = "Authorization";
+// const source = "localhost:5001";
 
 export const prev_question = () => {
   return {
@@ -23,16 +26,22 @@ export const prev_question = () => {
 };
 
 export const load_questions = group => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(show_loader());
-    return Axios.get(
-      `https://aykhan-quiz-app-backend.herokuapp.com/api/question/${group}`
-    ).then(data => {
-      dispatch({
-        type: LOAD_QUESTIONS,
-        payload: data.data
+    return Axios.get(`https://${source}/api/question/${group}`, {
+      headers: {
+        Authorization: getState().auth.token
+      }
+    })
+      .then(data => {
+        dispatch({
+          type: LOAD_QUESTIONS,
+          payload: data.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
-    });
   };
 };
 
@@ -61,8 +70,6 @@ export const addAnswer = (q_id, ans_id) => {
 
 export const submitAnswer = () => {
   return (dispatch, getState) => {
-    console.log("this function got called");
-
     const { user_ans } = getState().switching;
     let answ = Object.keys(user_ans).map(question_id => {
       return {
@@ -71,10 +78,18 @@ export const submitAnswer = () => {
       };
     });
     dispatch(show_loader());
-    Axios.post("https://aykhan-quiz-app-backend.herokuapp.com/api/check", {
-      anws: answ,
-      ans_weight: 1
-    }).then(res => {
+    Axios.post(
+      `https://${source}/api/check`,
+      {
+        anws: answ,
+        ans_weight: 1
+      },
+      {
+        headers: {
+          Authorization: getState().auth.token
+        }
+      }
+    ).then(res => {
       dispatch(results_received(res.data));
     });
   };
@@ -82,12 +97,13 @@ export const submitAnswer = () => {
 
 export const register_user = (username, email, password, isMaker) => {
   return dispatch => {
-    Axios.post("https://aykhan-quiz-app-backend.herokuapp.com/register", {
+    Axios.post(`https://${source}/register`, {
       name: username,
       pass: password,
+      email: email,
       isMaker: isMaker
     }).then(data => {
-      console.log(data);
+      //TODO change the replace method
       if (data.data.message.includes("OK")) window.location.replace("/login");
     });
   };
@@ -95,11 +111,10 @@ export const register_user = (username, email, password, isMaker) => {
 
 export const login_user = (username, password) => {
   return dispatch => {
-    Axios.post("https://aykhan-quiz-app-backend.herokuapp.com/login", {
+    Axios.post(`https://${source}/login`, {
       name: username,
       pass: password
     }).then(data => {
-      console.log(data.data);
       if (data.data.message.includes("logged in")) {
         dispatch({
           type: LOGIN_USER,

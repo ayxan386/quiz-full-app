@@ -93,14 +93,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-
   return {
     questions: state.switching.questions,
     current_index: state.switching.currentIndex,
     user_ans: state.switching.user_ans,
     isLoaded: state.switching.isLoaded,
-    result: state.switching.result
+    result: state.switching.result,
+    token: state.auth.token
   };
 };
 

@@ -29,7 +29,6 @@ const swtich_reducer = (state = init_state, action) => {
       let temp_ans = { ...state.user_ans };
       temp_ans[action.payload.question_id] = action.payload.answer_number;
       let f = Object.assign({}, state, { user_ans: temp_ans });
-      console.log(f);
       return f;
 
     case RECEIVED_RESULTS:

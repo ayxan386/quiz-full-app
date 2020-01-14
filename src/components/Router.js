@@ -4,6 +4,7 @@ import App from "./App";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import QuizMaker from "./QuizMaker";
+import MainPage from "./MainPage";
 
 export class MyRouter extends Component {
   render() {
@@ -20,6 +21,9 @@ export class MyRouter extends Component {
         </Route>
         <Route path='/ss**'>
           <QuizMaker></QuizMaker>
+        </Route>
+        <Route path='/index**'>
+          <MainPage></MainPage>
         </Route>
       </Switch>
     );
