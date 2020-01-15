@@ -1,17 +1,22 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import QuizMaker from "./maker/QuizMaker";
+import Subjects from "./subjects/Subjects";
 import checkAuth from "../middlewares/IsAuth";
 import { connect } from "react-redux";
 
 export class MainPage extends Component {
   render() {
     return (
-      checkAuth(this.props.token) || (
-        <div className='row justify-content-center'>
-          <Link to='/takeTest'>Take Test</Link>
-          <Link to='/ss'>Make Test</Link>
+      // checkAuth(this.props.token)
+      <div className='' id='main-page-controller'>
+        <div id='my-subjects'>
+          <Subjects></Subjects>
         </div>
-      )
+        <div id='make-quiz'>
+          <QuizMaker></QuizMaker>
+        </div>
+        <div id='auth'>LOGOUT</div>
+      </div>
     );
   }
 }

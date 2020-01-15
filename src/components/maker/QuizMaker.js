@@ -28,12 +28,13 @@ export class QuizMaker extends Component {
 
   render() {
     return (
-      checkAuth(this.props.token) || (
-        <>
-          <Helmet>
-            <title>Make a Quiz</title>
-          </Helmet>
-          <div className='jumbotron h-100'>
+      // checkAuth(this.props.token) || (
+      <>
+        <Helmet>
+          <title>Make a Quiz</title>
+        </Helmet>
+        <div className='jumbotron flex-column align-items-center d-flex space-between h-100'>
+          <div className='row h-100 space-between align-items-center w-100'>
             <div id='question-holder'>
               {this.props.questions.map(question => (
                 <SmallQuestion
@@ -41,31 +42,34 @@ export class QuizMaker extends Component {
                   anss={question.options}></SmallQuestion>
               ))}
             </div>
-            <div
-              id='question-adding'
-              className='align-items-center justify-content-center row'>
-              {!this.state.isAdding ? (
-                <button
-                  onClick={() => this.addQuestion()}
-                  className='btn btn-success'>
-                  Add new Question
-                </button>
-              ) : (
-                <QuestionAdder
-                  remove={this.removeQuestionAdder}
-                  addQuestion={this.props.question_add}></QuestionAdder>
-              )}
+            {/* End of question-holder */}
+            <div id='question-adding' className='row align-content-center'>
+              <div className='row align-items-center p-4 border-dark space-evenly w-100'>
+                {!this.state.isAdding ? (
+                  <button
+                    onClick={() => this.addQuestion()}
+                    className='btn btn-success'>
+                    Add new Question
+                  </button>
+                ) : (
+                  <QuestionAdder
+                    remove={this.removeQuestionAdder}
+                    addQuestion={this.props.question_add}></QuestionAdder>
+                )}
+              </div>
             </div>
+            {/* End of question-adder */}
           </div>
-        </>
-      )
+          <div>
+            <button className='btn btn-primary'>SEND</button>
+          </div>
+        </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-
   return {
     subject: state.maker.subject,
     questions: state.maker.questions,

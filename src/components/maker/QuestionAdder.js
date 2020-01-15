@@ -34,23 +34,17 @@ export class QuestionAdder extends Component {
 
   render() {
     return (
-      <div className='row align-items-center justify-content-center p-4 border-dark'>
+      <>
         <form>
           <div className='form-group'>
             <label htmlFor='question'>Question: </label>
             <input
-              type='text-area'
               name='question'
               className='input-group'
               onChange={this.handleChange}
               value={this.state.question}></input>
           </div>
           <div className='form-group'>
-            <div id='answer-holder'>
-              {this.state.answers.map(ans => (
-                <div key={ans}>{ans}</div>
-              ))}
-            </div>
             <label htmlFor='answer-button'>Answers: </label>
             <input
               type='text'
@@ -58,7 +52,8 @@ export class QuestionAdder extends Component {
               name='answer'
               className='input-group'
               value={this.state.answer}></input>
-
+          </div>
+          <div className='form-group'>
             <input
               type='button'
               name='answer-button'
@@ -78,7 +73,12 @@ export class QuestionAdder extends Component {
             Add Question
           </button>
         </form>
-      </div>
+        <div id='answer-holder'>
+          {this.state.answers.map(ans => (
+            <div key={ans}>{ans}</div>
+          ))}
+        </div>
+      </>
     );
   }
 }
