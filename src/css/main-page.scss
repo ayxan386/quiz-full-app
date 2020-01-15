@@ -4,12 +4,14 @@
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: 30% 20% 40% 10%;
   grid-template-areas: ". H H A" "S . M M" "S . M M" "S . M M";
+  row-gap: 5px;
   margin: 5px 25px 5px 5px;
   #my-subjects {
     grid-area: S;
   }
   #make-quiz {
     grid-area: M;
+    color: black;
     // .quiz-grid {
     //   display: grid;
     //   grid-template-rows: 6fr 1fr;
@@ -23,6 +25,12 @@
   }
   #auth {
     grid-area: A;
+    display: flex;
+    font-size: 1.5rem;
+    background: #eee;
+    color: black;
+    align-items: center;
+    justify-content: center;
   }
   #header {
     grid-area: H;

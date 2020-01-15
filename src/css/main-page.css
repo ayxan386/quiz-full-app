@@ -7,6 +7,7 @@
   -ms-grid-columns: 30% 20% 40% 10%;
       grid-template-columns: 30% 20% 40% 10%;
       grid-template-areas: ". H H A" "S . M M" "S . M M" "S . M M";
+  row-gap: 5px;
   margin: 5px 25px 5px 5px;
 }
 
@@ -23,6 +24,7 @@
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-area: M;
+  color: black;
 }
 
 #main-page-controller #make-quiz #question-adding {
@@ -34,6 +36,18 @@
   -ms-grid-row: 1;
   -ms-grid-column: 4;
   grid-area: A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+  background: #eee;
+  color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #main-page-controller #header {

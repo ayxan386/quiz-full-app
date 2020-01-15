@@ -1,4 +1,4 @@
-import { LOGIN_USER, REGISTER_USER } from "./reducer-consts";
+import { LOGIN_USER, REGISTER_USER, LOGOUT } from "./reducer-consts";
 
 const initState = {
   token: ""
@@ -10,6 +10,8 @@ export const auth_reducer = (state = initState, action) => {
       return Object.assign({}, state, { token: action.payload });
     case REGISTER_USER:
       return Object.assign({}, state, { token: action.payload });
+    case LOGOUT:
+      return Object.assign({}, state, { token: "" });
     default:
       return state;
   }

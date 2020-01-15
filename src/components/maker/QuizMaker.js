@@ -36,11 +36,15 @@ export class QuizMaker extends Component {
         <div className='jumbotron flex-column align-items-center d-flex space-between h-100'>
           <div className='row h-100 space-between align-items-center w-100'>
             <div id='question-holder'>
-              {this.props.questions.map(question => (
-                <SmallQuestion
-                  question={question.question}
-                  anss={question.options}></SmallQuestion>
-              ))}
+              <ol>
+                {this.props.questions.map(question => (
+                  <li>
+                    <SmallQuestion
+                      question={question.question}
+                      anss={question.options}></SmallQuestion>
+                  </li>
+                ))}
+              </ol>
             </div>
             {/* End of question-holder */}
             <div id='question-adding' className='row align-content-center'>

@@ -5,7 +5,8 @@ import {
   RECEIVED_RESULTS,
   SHOW_LOADER,
   ADD_ANSWER,
-  ADD_QUESTION
+  ADD_QUESTION,
+  LOGOUT
 } from "./reducer-consts";
 import Axios from "axios";
 import { login, register } from "./reducerMethods/AuthMethods";
@@ -85,5 +86,11 @@ export const addQuestion = question => {
   return {
     type: ADD_QUESTION,
     payload: question
+  };
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT
   };
 };

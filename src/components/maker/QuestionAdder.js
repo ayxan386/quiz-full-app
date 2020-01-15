@@ -26,10 +26,11 @@ export class QuestionAdder extends Component {
   };
 
   addAns = () => {
-    this.setState({
-      answers: [...this.state.answers, this.state.answer],
-      answer: ""
-    });
+    if (this.state.answer.length > 0)
+      this.setState({
+        answers: [...this.state.answers, this.state.answer],
+        answer: ""
+      });
   };
 
   render() {
@@ -65,8 +66,13 @@ export class QuestionAdder extends Component {
           </div>
           <button
             onClick={() => {
-              this.props.addQuestion(this.getCollectedQuestion());
-              this.props.remove();
+              if (
+                this.state.answers.length > 0 &&
+                this.state.question.length > 0
+              ) {
+                this.props.addQuestion(this.getCollectedQuestion());
+                this.props.remove();
+              }
             }}
             className='btn btn-primary'
             type='button'>
@@ -74,9 +80,13 @@ export class QuestionAdder extends Component {
           </button>
         </form>
         <div id='answer-holder'>
-          {this.state.answers.map(ans => (
-            <div key={ans}>{ans}</div>
-          ))}
+          <ol>
+            {this.state.answers.map(ans => (
+              <li>
+                <div key={ans}>{ans}</div>
+              </li>
+            ))}
+          </ol>
         </div>
       </>
     );
