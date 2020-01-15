@@ -3,8 +3,6 @@ import Question from "./Question";
 import ChangeButton from "./ChangeButton";
 import Answer from "./Answer";
 import SubmitButton from "./SubmitButton";
-import "../../css/bootstrap.min.css";
-import "../../css/main.css";
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import {

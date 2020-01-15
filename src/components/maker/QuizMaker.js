@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import QuestionAdder from "./QuestionAdder";
-import { addQuestion } from "../reducers/reducerActions";
+import { addQuestion } from "../../reducers/reducerActions";
 import SmallQuestion from "./SmallQuestion";
-import checkAuth from "../middlewares/IsAuth";
-import "../css/bootstrap.min.css";
-import "../css/main.css";
+import checkAuth from "../../middlewares/IsAuth";
 
 export class QuizMaker extends Component {
   constructor(props) {
