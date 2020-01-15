@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import App from "./App";
+import App from "./test taking/App";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import QuizMaker from "./QuizMaker";

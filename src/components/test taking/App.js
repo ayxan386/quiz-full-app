@@ -3,8 +3,8 @@ import Question from "./Question";
 import ChangeButton from "./ChangeButton";
 import Answer from "./Answer";
 import SubmitButton from "./SubmitButton";
-import "../css/bootstrap.min.css";
-import "../css/main.css";
+import "../../css/bootstrap.min.css";
+import "../../css/main.css";
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import {
@@ -13,8 +13,8 @@ import {
   load_questions,
   addAnswer,
   submitAnswer
-} from "../reducers/reducerActions";
-import checkAuth from "../middlewares/IsAuth";
+} from "../../reducers/reducerActions";
+import checkAuth from "../../middlewares/IsAuth";
 
 class App extends React.Component {
   componentDidMount() {

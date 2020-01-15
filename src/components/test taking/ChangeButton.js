@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/main.css";
 
 export class ChangeButton extends Component {
   render() {
