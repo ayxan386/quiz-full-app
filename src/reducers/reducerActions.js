@@ -5,18 +5,19 @@ import {
   RECEIVED_RESULTS,
   SHOW_LOADER,
   ADD_ANSWER,
-  LOGIN_USER,
-  ADD_QUESTION,
-  ERROR
+  ADD_QUESTION
 } from "./reducer-consts";
 import Axios from "axios";
+import { login, register } from "./reducerMethods/AuthMethods";
+import { postAnswers } from "./reducerMethods/QuestionMethods";
+
 export const next_question = () => {
   return {
     type: NEXT_QUESTION
   };
 };
-const source = "aykhan-quiz-app-backend.herokuapp.com";
-const AUTH = "Authorization";
+
+export const source = "aykhan-quiz-app-backend.herokuapp.com";
 // const source = "localhost:5001";
 
 export const prev_question = () => {
@@ -69,65 +70,15 @@ export const addAnswer = (q_id, ans_id) => {
 };
 
 export const submitAnswer = () => {
-  return (dispatch, getState) => {
-    const { user_ans } = getState().switching;
-    let answ = Object.keys(user_ans).map(question_id => {
-      return {
-        question_id,
-        answer_number: user_ans[question_id]
-      };
-    });
-    dispatch(show_loader());
-    Axios.post(
-      `https://${source}/api/check`,
-      {
-        anws: answ,
-        ans_weight: 1
-      },
-      {
-        headers: {
-          Authorization: getState().auth.token
-        }
-      }
-    ).then(res => {
-      dispatch(results_received(res.data));
-    });
-  };
+  return postAnswers();
 };
 
 export const register_user = (username, email, password, isMaker) => {
-  return dispatch => {
-    Axios.post(`https://${source}/register`, {
-      name: username,
-      pass: password,
-      email: email,
-      isMaker: isMaker
-    }).then(data => {
-      //TODO change the replace method
-      if (data.data.message.includes("OK")) window.location.replace("/login");
-    });
-  };
+  return register(username, email, password, isMaker);
 };
 
 export const login_user = (username, password) => {
-  return dispatch => {
-    Axios.post(`https://${source}/login`, {
-      name: username,
-      pass: password
-    }).then(data => {
-      if (data.data.message.includes("logged in")) {
-        dispatch({
-          type: LOGIN_USER,
-          payload: data.data.token
-        });
-      } else {
-        dispatch({
-          type: ERROR,
-          payload: "Wrong username/password"
-        });
-      }
-    });
-  };
+  return login(username, password);
 };
 
 export const addQuestion = question => {

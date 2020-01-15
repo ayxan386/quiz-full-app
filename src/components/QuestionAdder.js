@@ -23,6 +23,7 @@ export class QuestionAdder extends Component {
       options: answers
     };
   };
+
   addAns = () => {
     this.setState({
       answers: [...this.state.answers, this.state.answer],

@@ -7,7 +7,7 @@ export class MainPage extends Component {
   render() {
     return (
       checkAuth(this.props.token) || (
-        <div>
+        <div className='row justify-content-center'>
           <Link to='/takeTest'>Take Test</Link>
           <Link to='/ss'>Make Test</Link>
         </div>
