@@ -38,7 +38,7 @@ export class QuizMaker extends Component {
             <div id='question-holder'>
               <ol>
                 {this.props.questions.map(question => (
-                  <li>
+                  <li className='question'>
                     <SmallQuestion
                       question={question.question}
                       anss={question.options}></SmallQuestion>

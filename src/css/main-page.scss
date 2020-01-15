@@ -22,6 +22,17 @@
       width: 70%;
       //   border: 1px solid #dedede;
     }
+    .question {
+      font-size: 1.3rem;
+      padding: 9px 4px;
+      .question-header {
+        font-size: 1.5rem;
+        padding: 3px;
+      }
+      .answer-item {
+        padding: 2px;
+      }
+    }
   }
   #auth {
     grid-area: A;
@@ -31,6 +42,10 @@
     color: black;
     align-items: center;
     justify-content: center;
+    height: 50%;
+    &:hover {
+      background: #ddd;
+    }
   }
   #header {
     grid-area: H;
