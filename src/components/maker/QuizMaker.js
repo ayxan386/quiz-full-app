@@ -14,18 +14,6 @@ export class QuizMaker extends Component {
     };
   }
 
-  addQuestion = () => {
-    this.setState({
-      isAdding: true
-    });
-  };
-
-  removeQuestionAdder = () => {
-    this.setState({
-      isAdding: false
-    });
-  };
-
   render() {
     return (
       // checkAuth(this.props.token) || (
@@ -47,17 +35,8 @@ export class QuizMaker extends Component {
             {/* End of question-holder */}
             <div id='question-adding' className='row align-content-center'>
               <div className='row align-items-center p-4 border-dark w-100'>
-                {!this.state.isAdding ? (
-                  <button
-                    onClick={() => this.addQuestion()}
-                    className='btn btn-success'>
-                    Add new Question
-                  </button>
-                ) : (
-                  <QuestionAdder
-                    remove={this.removeQuestionAdder}
-                    addQuestion={this.props.question_add}></QuestionAdder>
-                )}
+                <QuestionAdder
+                  addQuestion={this.props.question_add}></QuestionAdder>
               </div>
             </div>
             {/* End of question-adder */}
@@ -67,9 +46,8 @@ export class QuizMaker extends Component {
           </div>
           <div id='rules'>
             <i>
-              Your questions should not contain more than 10 answers<br></br>
               Carefully check your question and the answers before pressing the
-              "Add Question button", as added question cannot be edited
+              "Add Question button", as added question cannot be edited.
             </i>
           </div>
         </div>

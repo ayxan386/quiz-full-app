@@ -63,6 +63,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  border: 1px solid #dedede;
 }
 
 #main-page-controller #make-quiz .question {
@@ -149,10 +150,9 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
   #main-page-controller {
     min-width: 350px;
-    font-size: 12px;
         grid-template-areas: "H" "A" "M" "S";
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;

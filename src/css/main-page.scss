@@ -12,11 +12,6 @@
   #make-quiz {
     grid-area: M;
     color: black;
-    // .quiz-grid {
-    //   display: grid;
-    //   grid-template-rows: 6fr 1fr;
-    //   grid-template-columns: 1fr 2fr;
-    // }
     #question-adding {
       height: 100%;
       width: 60%;
@@ -42,6 +37,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
+      border: 1px solid #dedede;
     }
 
     .question {
@@ -109,10 +105,10 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
   #main-page-controller {
     min-width: 350px;
-    font-size: 12px;
+    // font-size: 12px;
     grid-template-areas: "H" "A" "M" "S";
     grid-template-columns: 1fr;
   }
