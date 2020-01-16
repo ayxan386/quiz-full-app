@@ -36,19 +36,17 @@ export class QuizMaker extends Component {
         <div className='jumbotron flex-column align-items-center d-flex space-between h-100'>
           <div className='row h-100 space-between align-items-center w-100'>
             <div id='question-holder'>
-              <ol>
-                {this.props.questions.map(question => (
-                  <li className='question'>
-                    <SmallQuestion
-                      question={question.question}
-                      anss={question.options}></SmallQuestion>
-                  </li>
+              {this.props.questions
+                .filter((question, i) => i > this.props.questions.length - 4)
+                .map(question => (
+                  <SmallQuestion
+                    question={question.question}
+                    anss={question.options}></SmallQuestion>
                 ))}
-              </ol>
             </div>
             {/* End of question-holder */}
             <div id='question-adding' className='row align-content-center'>
-              <div className='row align-items-center p-4 border-dark space-evenly w-100'>
+              <div className='row align-items-center p-4 border-dark w-100'>
                 {!this.state.isAdding ? (
                   <button
                     onClick={() => this.addQuestion()}
@@ -64,8 +62,15 @@ export class QuizMaker extends Component {
             </div>
             {/* End of question-adder */}
           </div>
-          <div>
+          <div className='submit-button-holder'>
             <button className='btn btn-primary'>SEND</button>
+          </div>
+          <div id='rules'>
+            <i>
+              Your questions should not contain more than 10 answers<br></br>
+              Carefully check your question and the answers before pressing the
+              "Add Question button", as added question cannot be edited
+            </i>
           </div>
         </div>
       </>

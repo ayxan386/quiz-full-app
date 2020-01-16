@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class SmallQuestion extends Component {
   render() {
     return (
-      <div>
+      <div className='question'>
         <div className='question-header'>{this.props.question}</div>
         <div>
           <ol>

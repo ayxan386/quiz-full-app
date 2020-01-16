@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SmallAnswer from "./SmallAnswer";
 
 export class QuestionAdder extends Component {
   constructor(props) {
@@ -8,9 +9,17 @@ export class QuestionAdder extends Component {
       question: "",
       answers: [],
       answer: "",
-      collected_question: {}
+      collected_question: {},
+      ans_index: -1
     };
   }
+
+  setAnswer = index => {
+    this.setState({
+      ans_index: index
+    });
+  };
+
   handleChange = e => {
     let a = {};
     a[e.target.name] = e.target.value;
@@ -18,10 +27,11 @@ export class QuestionAdder extends Component {
   };
 
   getCollectedQuestion = () => {
-    const { question, answers } = this.state;
+    const { question, answers, ans_index } = this.state;
     return {
       question,
-      options: answers
+      options: answers,
+      answer: ans_index
     };
   };
 
@@ -39,11 +49,11 @@ export class QuestionAdder extends Component {
         <form>
           <div className='form-group'>
             <label htmlFor='question'>Question: </label>
-            <input
+            <textarea
               name='question'
-              className='input-group'
+              className='input-group custom-text-area'
               onChange={this.handleChange}
-              value={this.state.question}></input>
+              value={this.state.question}></textarea>
           </div>
           <div className='form-group'>
             <label htmlFor='answer-button'>Answers: </label>
@@ -81,9 +91,13 @@ export class QuestionAdder extends Component {
         </form>
         <div id='answer-holder'>
           <ol>
-            {this.state.answers.map(ans => (
+            {this.state.answers.map((ans, i) => (
               <li>
-                <div key={ans}>{ans}</div>
+                <SmallAnswer
+                  key={ans}
+                  text={ans}
+                  index={i}
+                  setAnswer={this.setAnswer}></SmallAnswer>
               </li>
             ))}
           </ol>
