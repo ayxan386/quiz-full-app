@@ -3,7 +3,7 @@ import React from "react";
 const checkAuth = token => {
   const flag = token && token.length > 0;
   if (flag) return;
-  // return <Redirect to='/login'></Redirect>;
+  return <Redirect to='/login'></Redirect>;
 };
 
 export const checkAuthFrom = token => {

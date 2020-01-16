@@ -3,7 +3,6 @@ import "../../css/form.css";
 import Helmet from "react-helmet";
 import { register_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 
 export class Register extends Component {
   constructor(props) {

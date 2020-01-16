@@ -1,4 +1,5 @@
 import { show_loader, results_received } from "../reducerActions";
+import { CLEAR_QUESTION } from "../reducer-consts";
 import Axios from "axios";
 
 import { source } from "../reducerActions";
@@ -30,13 +31,40 @@ export function postAnswers() {
   };
 }
 
-export function postQuestion() {
+export const clear_question = () => {
+  return {
+    type: CLEAR_QUESTION
+  };
+};
+
+export function postQuestions() {
+  const randomSubject = () => {
+    let res = "";
+    for (let i = 0; i < 20; i++) {
+      res += String.fromCharCode(
+        Math.floor(Math.random() * 26 + "a".charCodeAt())
+      );
+    }
+    return res;
+  };
+
   return (dispatch, getState) => {
     const { questions } = getState().maker;
-    questions.forEach(question => {
-      Axios.post("https://${source}/api/question", {
-        question
+    const subject = randomSubject();
+    Axios.post(`https://${source}/api/subject`, subject, {
+      headers: {
+        Authorization: getState().auth.token
+      }
+    }).then(data => {
+      questions.forEach(question => {
+        question.subject = subject;
+        Axios.post(`https://${source}/api/question`, question, {
+          headers: {
+            Authorization: getState().auth.token
+          }
+        });
       });
+      dispatch(clear_question());
     });
   };
 }

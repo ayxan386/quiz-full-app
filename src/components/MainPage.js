@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import QuizMaker from "./maker/QuizMaker";
 import Subjects from "./subjects/Subjects";
 import Logout from "./auth/Logout";
-import { logout } from "../reducers/reducerActions";
 import checkAuth from "../middlewares/IsAuth";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 export class MainPage extends Component {
   render() {
@@ -19,6 +19,7 @@ export class MainPage extends Component {
           </div>
           <div id='auth'>
             <Logout></Logout>
+            <Link to='/takeTest'>Take Test</Link>
           </div>
         </div>
       )

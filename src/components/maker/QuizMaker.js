@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import QuestionAdder from "./QuestionAdder";
 import { addQuestion } from "../../reducers/reducerActions";
 import SmallQuestion from "./SmallQuestion";
+import { postQuestions } from "../../reducers/reducerMethods/QuestionMethods";
 import checkAuth from "../../middlewares/IsAuth";
 
 export class QuizMaker extends Component {
@@ -16,42 +17,49 @@ export class QuizMaker extends Component {
 
   render() {
     return (
-      // checkAuth(this.props.token) || (
-      <>
-        <Helmet>
-          <title>Make a Quiz</title>
-        </Helmet>
-        <div className='jumbotron flex-column align-items-center d-flex space-between h-100'>
-          <div className='row h-100 space-between align-items-center w-100'>
-            <div id='question-holder'>
-              {this.props.questions
-                .filter((question, i) => i > this.props.questions.length - 4)
-                .map(question => (
-                  <SmallQuestion
-                    question={question.question}
-                    anss={question.options}></SmallQuestion>
-                ))}
-            </div>
-            {/* End of question-holder */}
-            <div id='question-adding' className='row align-content-center'>
-              <div className='row align-items-center p-4 border-dark w-100'>
-                <QuestionAdder
-                  addQuestion={this.props.question_add}></QuestionAdder>
+      checkAuth(this.props.token) || (
+        <>
+          <Helmet>
+            <title>Make a Quiz</title>
+          </Helmet>
+          <div className='jumbotron flex-column align-items-center d-flex space-between h-100'>
+            <div className='row h-100 space-between align-items-center w-100'>
+              <div id='question-holder'>
+                {this.props.questions
+                  .filter((question, i) => i > this.props.questions.length - 4)
+                  .map(question => (
+                    <SmallQuestion
+                      question={question.question}
+                      anss={question.options}></SmallQuestion>
+                  ))}
               </div>
+              {/* End of question-holder */}
+              <div id='question-adding' className='row align-content-center'>
+                <div className='row align-items-center p-4 border-dark w-100'>
+                  <QuestionAdder
+                    addQuestion={this.props.question_add}></QuestionAdder>
+                </div>
+              </div>
+              {/* End of question-adder */}
             </div>
-            {/* End of question-adder */}
+            <div className='submit-button-holder'>
+              <button
+                className='btn btn-primary'
+                onClick={() => {
+                  this.props.send_question();
+                }}>
+                SEND
+              </button>
+            </div>
+            <div id='rules'>
+              <i>
+                Carefully check your question and the answers before pressing
+                the "Add Question button", as added question cannot be edited.
+              </i>
+            </div>
           </div>
-          <div className='submit-button-holder'>
-            <button className='btn btn-primary'>SEND</button>
-          </div>
-          <div id='rules'>
-            <i>
-              Carefully check your question and the answers before pressing the
-              "Add Question button", as added question cannot be edited.
-            </i>
-          </div>
-        </div>
-      </>
+        </>
+      )
     );
   }
 }
@@ -66,9 +74,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    question_add: question => dispatch(addQuestion(question))
+    question_add: question => dispatch(addQuestion(question)),
+    send_question: () => dispatch(postQuestions())
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizMaker);
-// export default connect(mapStateToProps, mapDispatchToProps)(QuizMaker);
