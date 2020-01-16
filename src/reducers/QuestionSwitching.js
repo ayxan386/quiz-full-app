@@ -17,12 +17,16 @@ const swtich_reducer = (state = init_state, action) => {
   switch (action.type) {
     case NEXT_QUESTION:
       if (state.currentIndex + 1 < state.questions.length)
-        return Object.assign({}, state, state.currentIndex + 1);
+        return Object.assign({}, state, {
+          currentIndex: state.currentIndex + 1
+        });
       return state;
 
     case PREV_QUESTION:
-      if (state.currentIndex - 1 > 0)
-        return Object.assign({}, state, state.currentIndex - 1);
+      if (state.currentIndex > 0)
+        return Object.assign({}, state, {
+          currentIndex: state.currentIndex - 1
+        });
       return state;
 
     case ADD_ANSWER:
