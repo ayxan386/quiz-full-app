@@ -16,7 +16,13 @@ import checkAuth from "../../middlewares/IsAuth";
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.load("");
+    const url = window.location.href;
+    const params = url
+      .substring(url.indexOf("/tt/") + "/tt/".length)
+      .split("/");
+
+    const subject = (params && params[0]) || "";
+    this.props.load(subject);
   }
 
   submitFunc = () => {};

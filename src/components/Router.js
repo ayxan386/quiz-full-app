@@ -10,7 +10,7 @@ export class MyRouter extends Component {
   render() {
     return (
       <Switch>
-        <Route path='/takeTest**'>
+        <Route path='/tt**'>
           <App></App>
         </Route>
         <Route path='/register**'>
