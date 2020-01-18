@@ -11,6 +11,7 @@ export class MainPage extends Component {
     return (
       checkAuth(this.props.token) || (
         <div className='' id='main-page-controller'>
+          <div id='header'>Questions for the worlds</div>
           <div id='my-subjects'>
             <Subjects></Subjects>
           </div>

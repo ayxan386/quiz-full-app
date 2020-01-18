@@ -2,11 +2,11 @@
   display: -ms-grid;
   display: grid;
   height: 100%;
-  -ms-grid-rows: (1fr)[4];
-      grid-template-rows: repeat(4, 1fr);
+  -ms-grid-rows: 1fr (2fr)[3];
+      grid-template-rows: 1fr repeat(3, 2fr);
   -ms-grid-columns: 30% 20% 40% 10%;
       grid-template-columns: 30% 20% 40% 10%;
-      grid-template-areas: ". H H A" "S . M M" "S . M M" "S . M M";
+      grid-template-areas: "H H H A" "S . M M" "S . M M" "S . M M";
   row-gap: 5px;
   margin: 5px 25px 5px 5px;
 }
@@ -16,6 +16,18 @@
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: S;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+  background: #eee;
+  color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #main-page-controller #make-quiz {
@@ -120,7 +132,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 50%;
 }
 
 #main-page-controller #auth:hover {
@@ -129,9 +140,22 @@
 
 #main-page-controller #header {
   -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: H;
+  font-size: 42px;
+  color: #123;
+  padding: 22px 17px;
+  background: #dedede;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #main-page-controller .input-group {

@@ -7,7 +7,8 @@ import {
   ADD_ANSWER,
   ADD_QUESTION,
   LOGOUT,
-  ERASE
+  ERASE,
+  LOAD_SUBJECTS
 } from "./reducer-consts";
 import Axios from "axios";
 import { login, register } from "./reducerMethods/AuthMethods";
@@ -99,5 +100,12 @@ export const logout = () => {
 export const erase = () => {
   return {
     type: ERASE
+  };
+};
+
+export const load_subjects = arr => {
+  return {
+    type: LOAD_SUBJECTS,
+    payload: arr
   };
 };

@@ -6,7 +6,7 @@ const initState = {
   question: {}
 };
 
-const subject_reducer = (state = initState, action) => {
+const maker_reducer = (state = initState, action) => {
   switch (action.type) {
     case ADD_QUESTION:
       return Object.assign({}, state, {
@@ -21,4 +21,4 @@ const subject_reducer = (state = initState, action) => {
   }
 };
 
-export default subject_reducer;
+export default maker_reducer;

@@ -25,3 +25,5 @@ export const LOGOUT = "LOGOUT";
 export const CLEAR_QUESTION = "CLEAR_QUESTION";
 
 export const ERASE = "ERASE";
+
+export const LOAD_SUBJECTS = "LOAD_SUBJECTS";

@@ -1,13 +1,19 @@
 #main-page-controller {
   display: grid;
   height: 100%;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 1fr repeat(3, 2fr);
   grid-template-columns: 30% 20% 40% 10%;
-  grid-template-areas: ". H H A" "S . M M" "S . M M" "S . M M";
+  grid-template-areas: "H H H A" "S . M M" "S . M M" "S . M M";
   row-gap: 5px;
   margin: 5px 25px 5px 5px;
   #my-subjects {
     grid-area: S;
+    display: flex;
+    font-size: 1.5rem;
+    background: #eee;
+    color: black;
+    align-items: center;
+    justify-content: center;
   }
   #make-quiz {
     grid-area: M;
@@ -81,13 +87,19 @@
     color: black;
     align-items: center;
     justify-content: center;
-    height: 50%;
     &:hover {
       background: #ddd;
     }
   }
   #header {
     grid-area: H;
+    font-size: 42px;
+    color: #123;
+    padding: 22px 17px;
+    background: #dedede;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .input-group {
     width: 8rem;
