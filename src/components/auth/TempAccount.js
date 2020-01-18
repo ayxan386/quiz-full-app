@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../css/form.css";
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { register_temp } from "../../reducers/reducerMethods/AuthMethods";
 import { checkTempAuthFrom } from "../../middlewares/IsAuth";
 
@@ -30,16 +30,25 @@ export class TempAccount extends Component {
     e.target.reset();
   };
 
+  displayError = () => {
+    return this.props.err && this.props.err.length > 0 ? (
+      <div>
+        <p className=''>{this.props.err}</p>
+      </div>
+    ) : null;
+  };
+
   getSubject = () => {
-    const start = "/form/temp/";
+    const start = "/temp/form/";
     const url = window.location.href;
     const params = url.substring(url.indexOf(start) + start.length).split("/");
+
     return (params && params.length > 0 && params[0]) || "";
   };
 
   render() {
     return !checkTempAuthFrom(this.props.token) ? (
-      <Redirect to={`/tt/${this.getSubject()}`}></Redirect>
+      <Redirect to={`/ss/${this.getSubject()}`}></Redirect>
     ) : (
       <>
         <Helmet>
@@ -69,14 +78,7 @@ export class TempAccount extends Component {
                   Take Test
                 </button>
               </div>
-              {this.props.err && this.props.err.length > 0 ? (
-                <div>
-                  <p className=''>{this.props.err}</p>
-                </div>
-              ) : null}
-              <div>
-                <Link to='/register'>Register here</Link>
-              </div>
+              {this.displayError()}
             </form>
           </div>
         </div>

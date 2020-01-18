@@ -17,8 +17,6 @@ import { Redirect } from "react-router-dom";
 
 class App extends React.Component {
   componentDidMount() {
-    console.log(`/temp/form/${this.getSubject()}`);
-
     this.props.load(this.getSubject());
   }
 
@@ -42,16 +40,17 @@ class App extends React.Component {
         <Helmet>
           <title>Test Page</title>
         </Helmet>
-        <div className='App w-100 h-100 jumbotron' style={{ display: "flex" }}>
-          <div className='main-area'>
-            <div className='question-container'>
+        <div className='App row'>
+          <div className='main-area jumbotron col-8 min-width'>
+            <div className='question-container min-width'>
               {this.props.isLoaded ? (
                 <Question question_text={current_question.question}></Question>
               ) : (
                 <div
                   style={{
                     width: "45rem",
-                    height: "10rem"
+                    height: "10rem",
+                    background: "red"
                   }}></div>
               )}
             </div>

@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import App from "./test taking/App";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
-// import QuizMaker from "./maker/QuizMaker";
 import MainPage from "./MainPage";
 import TempAccount from "./auth/TempAccount";
+import StartPage from "./test taking/StartPage";
 
 export class MyRouter extends Component {
   render() {
@@ -20,9 +20,9 @@ export class MyRouter extends Component {
         <Route path='/login**'>
           <Login></Login>
         </Route>
-        {/* <Route path='/ss**'>
-          <QuizMaker></QuizMaker>
-        </Route> */}
+        <Route path='/ss**'>
+          <StartPage></StartPage>
+        </Route>
         <Route path='/index**'>
           <MainPage></MainPage>
         </Route>
