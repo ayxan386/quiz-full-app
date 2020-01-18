@@ -23,3 +23,5 @@ export const ERROR = "ERROR";
 export const LOGOUT = "LOGOUT";
 
 export const CLEAR_QUESTION = "CLEAR_QUESTION";
+
+export const ERASE = "ERASE";

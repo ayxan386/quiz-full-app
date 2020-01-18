@@ -12,4 +12,9 @@ export const checkAuthFrom = token => {
   return null;
 };
 
+export const checkTempAuthFrom = token => {
+  const flag = token && token.length > 0;
+  return !flag;
+};
+
 export default checkAuth;

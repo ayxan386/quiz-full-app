@@ -2,7 +2,8 @@ import {
   NEXT_QUESTION,
   PREV_QUESTION,
   ADD_ANSWER,
-  RECEIVED_RESULTS
+  RECEIVED_RESULTS,
+  ERASE
 } from "./reducer-consts";
 import { LOAD_QUESTIONS, SHOW_LOADER } from "./reducer-consts";
 
@@ -10,7 +11,8 @@ const init_state = {
   currentIndex: 0,
   user_ans: {},
   isLoaded: false,
-  questions: []
+  questions: [],
+  result: 0
 };
 
 const swtich_reducer = (state = init_state, action) => {
@@ -48,6 +50,8 @@ const swtich_reducer = (state = init_state, action) => {
     case SHOW_LOADER:
       return Object.assign({}, state, { isLoaded: false });
 
+    case ERASE:
+      return Object.assign({}, state, init_state);
     default:
       return state;
   }

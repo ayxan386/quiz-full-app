@@ -3,8 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import App from "./test taking/App";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
-import QuizMaker from "./maker/QuizMaker";
+// import QuizMaker from "./maker/QuizMaker";
 import MainPage from "./MainPage";
+import TempAccount from "./auth/TempAccount";
 
 export class MyRouter extends Component {
   render() {
@@ -19,11 +20,14 @@ export class MyRouter extends Component {
         <Route path='/login**'>
           <Login></Login>
         </Route>
-        <Route path='/ss**'>
+        {/* <Route path='/ss**'>
           <QuizMaker></QuizMaker>
-        </Route>
+        </Route> */}
         <Route path='/index**'>
           <MainPage></MainPage>
+        </Route>
+        <Route path='/temp/form**'>
+          <TempAccount></TempAccount>
         </Route>
       </Switch>
     );

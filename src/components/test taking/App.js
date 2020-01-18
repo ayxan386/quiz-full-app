@@ -12,86 +12,86 @@ import {
   addAnswer,
   submitAnswer
 } from "../../reducers/reducerActions";
-import checkAuth from "../../middlewares/IsAuth";
+import { checkTempAuthFrom } from "../../middlewares/IsAuth";
+import { Redirect } from "react-router-dom";
 
 class App extends React.Component {
   componentDidMount() {
+    console.log(`/temp/form/${this.getSubject()}`);
+
+    this.props.load(this.getSubject());
+  }
+
+  getSubject = () => {
     const url = window.location.href;
     const params = url
       .substring(url.indexOf("/tt/") + "/tt/".length)
       .split("/");
-
-    const subject = (params && params[0]) || "";
-    this.props.load(subject);
-  }
-
-  submitFunc = () => {};
+    return (params && params[0]) || "";
+  };
 
   render() {
     let current_question = this.props.isLoaded
       ? this.props.questions[this.props.current_index]
       : undefined;
 
-    return (
-      checkAuth(this.props.token) || (
-        <>
-          <Helmet>
-            <title>Test Page</title>
-          </Helmet>
-          <div
-            className='App w-100 h-100 jumbotron'
-            style={{ display: "flex" }}>
-            <div className='main-area'>
-              <div className='question-container'>
-                {this.props.isLoaded ? (
-                  <Question
-                    question_text={current_question.question}></Question>
-                ) : (
-                  <div
-                    style={{
-                      width: "45rem",
-                      height: "10rem"
-                    }}></div>
-                )}
-              </div>
-
-              <div className='answers-container'>
-                {/* Previouse button */}
-                <ChangeButton
-                  event={this.props.prev_question}
-                  addClassName='justify-left'
-                  buttonClass='arrow left-arrow'></ChangeButton>
-                {/* Holds answers */}
-                <div className='answers-holder'>
-                  {current_question !== undefined
-                    ? current_question.options.map((a, i) => {
-                        return (
-                          <Answer
-                            key={i * 62}
-                            answer={a.content}
-                            index={a.id}
-                            id={current_question.id}
-                            submitted={this.props.change}
-                            selected={
-                              this.props.user_ans[current_question.id]
-                            }></Answer>
-                        );
-                      })
-                    : null}
-                </div>
-
-                <ChangeButton
-                  event={this.props.next_question}
-                  addClassName='self-justify-right'
-                  buttonClass='arrow right-arrow'></ChangeButton>
-              </div>
-              <SubmitButton
-                submitFunc={() => this.props.submitAnss()}></SubmitButton>
-              <h1>{this.props.result}</h1>
+    return checkTempAuthFrom(this.props.token) ? (
+      <Redirect to={`/temp/form/${this.getSubject()}`}></Redirect>
+    ) : (
+      <>
+        <Helmet>
+          <title>Test Page</title>
+        </Helmet>
+        <div className='App w-100 h-100 jumbotron' style={{ display: "flex" }}>
+          <div className='main-area'>
+            <div className='question-container'>
+              {this.props.isLoaded ? (
+                <Question question_text={current_question.question}></Question>
+              ) : (
+                <div
+                  style={{
+                    width: "45rem",
+                    height: "10rem"
+                  }}></div>
+              )}
             </div>
+
+            <div className='answers-container'>
+              {/* Previouse button */}
+              <ChangeButton
+                event={this.props.prev_question}
+                addClassName='justify-left'
+                buttonClass='arrow left-arrow'></ChangeButton>
+              {/* Holds answers */}
+              <div className='answers-holder'>
+                {current_question !== undefined
+                  ? current_question.options.map((a, i) => {
+                      return (
+                        <Answer
+                          key={i * 62}
+                          answer={a.content}
+                          index={a.id}
+                          id={current_question.id}
+                          submitted={this.props.change}
+                          selected={
+                            this.props.user_ans[current_question.id]
+                          }></Answer>
+                      );
+                    })
+                  : null}
+              </div>
+
+              <ChangeButton
+                event={this.props.next_question}
+                addClassName='self-justify-right'
+                buttonClass='arrow right-arrow'></ChangeButton>
+            </div>
+            <SubmitButton
+              submitFunc={() => this.props.submitAnss()}></SubmitButton>
+            <h1>{this.props.result}</h1>
           </div>
-        </>
-      )
+        </div>
+      </>
     );
   }
 }

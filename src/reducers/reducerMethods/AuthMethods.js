@@ -24,6 +24,27 @@ export function login(username, password) {
   };
 }
 
+export function register_temp(username, email) {
+  return dispatch => {
+    Axios.post(`https://${source}/temp`, {
+      name: username,
+      email: email
+    }).then(data => {
+      if (data.data.message.includes("success")) {
+        dispatch({
+          type: LOGIN_USER,
+          payload: data.data.token
+        });
+      } else {
+        dispatch({
+          type: ERROR,
+          payload: "User already taken"
+        });
+      }
+    });
+  };
+}
+
 export function register(username, email, password, isMaker) {
   return dispatch => {
     Axios.post(`https://${source}/register`, {

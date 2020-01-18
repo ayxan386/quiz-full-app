@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout } from "../../reducers/reducerActions";
+import { logout, erase } from "../../reducers/reducerActions";
 
 export class Logout extends Component {
   render() {
@@ -19,7 +19,10 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => {
   return {
-    logoutMe: () => dispatch(logout())
+    logoutMe: () => {
+      dispatch(logout());
+      dispatch(erase());
+    }
   };
 };
 

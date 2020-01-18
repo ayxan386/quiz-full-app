@@ -1,4 +1,4 @@
-import { ADD_QUESTION, CLEAR_QUESTION } from "./reducer-consts";
+import { ADD_QUESTION, CLEAR_QUESTION, ERASE } from "./reducer-consts";
 
 const initState = {
   subject: "",
@@ -14,6 +14,8 @@ const subject_reducer = (state = initState, action) => {
       });
     case CLEAR_QUESTION:
       return Object.assign({}, state, { questions: [] });
+    case ERASE:
+      return Object.assign({}, state, initState);
     default:
       return state;
   }
