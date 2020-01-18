@@ -17,6 +17,8 @@ import { Redirect } from "react-router-dom";
 
 class App extends React.Component {
   componentDidMount() {
+    console.log("Loading :" + this.getSubject());
+
     this.props.load(this.getSubject());
   }
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSubjects } from "../../reducers/reducerMethods/SubjectMethods";
+import { Link } from "react-router-dom";
 
 export class Subjects extends Component {
   componentDidMount() {
@@ -13,7 +14,11 @@ export class Subjects extends Component {
     return (
       <div>
         {this.props.subjects.map(subject => {
-          return <div key={subject}>{subject}</div>;
+          return (
+            <Link key={subject} to={`/ss/${subject}`}>
+              <div>{subject}</div>
+            </Link>
+          );
         })}
       </div>
     );

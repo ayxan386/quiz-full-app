@@ -4,11 +4,10 @@
   height: 100%;
   -ms-grid-rows: 1fr (2fr)[3];
       grid-template-rows: 1fr repeat(3, 2fr);
-  -ms-grid-columns: 30% 20% 40% 10%;
-      grid-template-columns: 30% 20% 40% 10%;
+  -ms-grid-columns: 30% 6% 54% 10%;
+      grid-template-columns: 30% 6% 54% 10%;
       grid-template-areas: "H H H A" "S . M M" "S . M M" "S . M M";
   row-gap: 5px;
-  margin: 5px 25px 5px 5px;
 }
 
 #main-page-controller #my-subjects {
