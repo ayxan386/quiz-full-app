@@ -22,7 +22,7 @@ export class QuizMaker extends Component {
           <Helmet>
             <title>Make a Quiz</title>
           </Helmet>
-          <div className='jumbotron flex-column align-items-center d-flex space-between h-100'>
+          <div className='jumbotron flex-column align-items-center d-flex h-100'>
             <div className='row h-100 space-between align-items-center w-100'>
               <div id='question-holder'>
                 {this.props.questions
@@ -35,7 +35,7 @@ export class QuizMaker extends Component {
               </div>
               {/* End of question-holder */}
               <div id='question-adding' className='row align-content-center'>
-                <div className='row align-items-center p-4 border-dark w-100'>
+                <div className='row align-items-center w-100'>
                   <QuestionAdder
                     addQuestion={this.props.question_add}></QuestionAdder>
                 </div>
