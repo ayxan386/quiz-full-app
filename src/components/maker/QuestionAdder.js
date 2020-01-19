@@ -52,34 +52,49 @@ export class QuestionAdder extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.ignoreSubmit}>
-          <div className='form-group'>
-            <label htmlFor='question'>Question: </label>
-            <textarea
-              name='question'
-              className='input-group custom-text-area'
-              onChange={this.handleChange}
-              value={this.state.question}></textarea>
+        <div className='row align-content-center nowrap-row'>
+          <form onSubmit={this.ignoreSubmit}>
+            <div className='form-group'>
+              <label htmlFor='question'>Question: </label>
+              <textarea
+                name='question'
+                className='input-group custom-text-area'
+                onChange={this.handleChange}
+                value={this.state.question}></textarea>
+            </div>
+            <div className='form-group'>
+              <label htmlFor='answer-button'>Answers: </label>
+              <input
+                type='text'
+                onChange={this.handleChange}
+                name='answer'
+                className='input-group'
+                value={this.state.answer}></input>
+            </div>
+            <div className='form-group'>
+              <input
+                type='button'
+                name='answer-button'
+                value='Add answer'
+                className='btn btn-danger'
+                onClick={() => {
+                  this.addAns();
+                }}></input>
+            </div>
+          </form>
+          <div id='answer-holder'>
+            {this.state.answers.map((ans, i) => (
+              <div key={i * 71}>
+                <SmallAnswer
+                  key={ans}
+                  text={ans}
+                  index={i}
+                  setAnswer={this.setAnswer}></SmallAnswer>
+              </div>
+            ))}
           </div>
-          <div className='form-group'>
-            <label htmlFor='answer-button'>Answers: </label>
-            <input
-              type='text'
-              onChange={this.handleChange}
-              name='answer'
-              className='input-group'
-              value={this.state.answer}></input>
-          </div>
-          <div className='form-group'>
-            <input
-              type='button'
-              name='answer-button'
-              value='Add answer'
-              className='btn btn-danger'
-              onClick={() => {
-                this.addAns();
-              }}></input>
-          </div>
+        </div>
+        <div className='text-align-center'>
           <button
             onClick={() => {
               if (
@@ -95,17 +110,6 @@ export class QuestionAdder extends Component {
             type='button'>
             Add Question
           </button>
-        </form>
-        <div id='answer-holder'>
-          {this.state.answers.map((ans, i) => (
-            <div key={i * 71}>
-              <SmallAnswer
-                key={ans}
-                text={ans}
-                index={i}
-                setAnswer={this.setAnswer}></SmallAnswer>
-            </div>
-          ))}
         </div>
       </>
     );

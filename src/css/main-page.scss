@@ -5,6 +5,7 @@
   grid-template-columns: 30% 6% 54% 10%;
   grid-template-areas: "H H H A" "S . M M" "S . M M" "S . M M";
   row-gap: 5px;
+
   #my-subjects {
     grid-area: S;
     display: flex;
@@ -14,10 +15,13 @@
     align-items: center;
     justify-content: center;
     min-width: 19.5rem;
+    min-height: 700px;
   }
+
   #make-quiz {
     grid-area: M;
     color: black;
+    min-height: 700px;
 
     .question-form {
       display: flex;
@@ -32,9 +36,10 @@
       height: 100%;
       width: 60%;
       border: 1px solid #dedede;
-
-      flex-wrap: nowrap;
-      flex-direction: row;
+      .nowrap-row {
+        flex-wrap: nowrap;
+        flex-direction: row;
+      }
       form {
         width: 59%;
 
@@ -150,6 +155,7 @@
 
     #make-quiz {
       width: 100%;
+
       .question-form {
         flex-direction: column-reverse;
         flex-wrap: nowrap;
@@ -193,4 +199,8 @@
 
 .space-evenly {
   justify-content: space-evenly;
+}
+
+.text-align-center {
+  text-align: center;
 }
