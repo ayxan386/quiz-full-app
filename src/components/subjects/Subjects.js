@@ -13,9 +13,9 @@ export class Subjects extends Component {
   render() {
     return (
       <div>
-        {this.props.subjects.map(subject => {
+        {this.props.subjects.map((subject, i) => {
           return (
-            <Link key={subject} to={`/ss/${subject}`}>
+            <Link key={i} to={`/ss/${subject}`}>
               <div>{subject}</div>
             </Link>
           );
