@@ -26,11 +26,12 @@ export class QuizMaker extends Component {
             <div className='row h-100 space-between align-items-center w-100'>
               <div id='question-holder'>
                 {this.props.questions
-                  .filter((question, i) => i > this.props.questions.length - 4)
-                  .map(question => (
+                  .filter((question, i) => i > this.props.questions.length - 2)
+                  .map((question, i) => (
                     <SmallQuestion
                       question={question.question}
-                      anss={question.options}></SmallQuestion>
+                      anss={question.options}
+                      key={i}></SmallQuestion>
                   ))}
               </div>
               {/* End of question-holder */}

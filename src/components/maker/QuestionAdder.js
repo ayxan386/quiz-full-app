@@ -45,10 +45,14 @@ export class QuestionAdder extends Component {
       });
   };
 
+  ignoreSubmit = e => {
+    e.preventDefault();
+  };
+
   render() {
     return (
       <>
-        <form>
+        <form onSubmit={this.ignoreSubmit}>
           <div className='form-group'>
             <label htmlFor='question'>Question: </label>
             <textarea

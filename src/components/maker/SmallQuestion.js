@@ -7,8 +7,8 @@ export class SmallQuestion extends Component {
         <div className='question-header'>{this.props.question}</div>
         <div>
           <ol>
-            {this.props.anss.map(ans => (
-              <li className='answer-item'>
+            {this.props.anss.map((ans, i) => (
+              <li className='answer-item' key={i}>
                 <div>{ans}</div>
               </li>
             ))}
