@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 export class Subjects extends Component {
   componentDidMount() {
-    if (!this.props.subjects || this.props.subjects.length < 1) {
-      this.props.getSubs();
-    }
+    // if (!this.props.subjects || this.props.subjects.length < 1) {
+    this.props.getSubs();
+    // }
   }
 
   render() {

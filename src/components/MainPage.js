@@ -20,7 +20,7 @@ export class MainPage extends Component {
           </div>
           <div id='auth'>
             <Logout></Logout>
-            <Link to='/tt/nonsense'>Take Test</Link>
+            <Link to='/tt/'>Take Test</Link>
           </div>
         </div>
       )
