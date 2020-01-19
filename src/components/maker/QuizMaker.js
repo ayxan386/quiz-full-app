@@ -35,10 +35,8 @@ export class QuizMaker extends Component {
               </div>
               {/* End of question-holder */}
               <div id='question-adding' className='row align-content-center'>
-                <div className='row align-items-center w-100'>
-                  <QuestionAdder
-                    addQuestion={this.props.question_add}></QuestionAdder>
-                </div>
+                <QuestionAdder
+                  addQuestion={this.props.question_add}></QuestionAdder>
               </div>
               {/* End of question-adder */}
             </div>

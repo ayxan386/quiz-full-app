@@ -42,11 +42,16 @@
   height: 100%;
   width: 60%;
   border: 1px solid #dedede;
-  margin: 15px 5px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 #main-page-controller #make-quiz #question-adding form {
-  width: 70%;
+  width: 59%;
 }
 
 #main-page-controller #make-quiz #question-adding form .custom-text-area {
@@ -95,24 +100,28 @@
 
 #main-page-controller #make-quiz #answer-holder {
   height: 100%;
-  width: 30%;
+  width: 40%;
   max-height: 20rem;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
-#main-page-controller #make-quiz #answer-holder .answer-label {
+#main-page-controller #make-quiz #answer-holder div {
   width: 100%;
-  margin: 4px 4px;
-  padding: 15px 7px;
+  padding: 5px 7px;
+  border-radius: 5%;
+  margin: 0px;
 }
 
-#main-page-controller #make-quiz #answer-holder .answer-checkbox {
-  margin: 15px 7px;
+#main-page-controller #make-quiz #answer-holder div:hover {
+  background: #bbbbbb;
 }
 
-#main-page-controller #make-quiz .submit-button-holder {
-  margin: 25px 7px;
+#main-page-controller #make-quiz #answer-holder label {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 #main-page-controller #auth {

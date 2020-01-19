@@ -93,17 +93,15 @@ export class QuestionAdder extends Component {
           </button>
         </form>
         <div id='answer-holder'>
-          <ol>
-            {this.state.answers.map((ans, i) => (
-              <li key={i * 71}>
-                <SmallAnswer
-                  key={ans}
-                  text={ans}
-                  index={i}
-                  setAnswer={this.setAnswer}></SmallAnswer>
-              </li>
-            ))}
-          </ol>
+          {this.state.answers.map((ans, i) => (
+            <div key={i * 71}>
+              <SmallAnswer
+                key={ans}
+                text={ans}
+                index={i}
+                setAnswer={this.setAnswer}></SmallAnswer>
+            </div>
+          ))}
         </div>
       </>
     );

@@ -22,19 +22,24 @@
       height: 100%;
       width: 60%;
       border: 1px solid #dedede;
-      margin: 15px 5px;
+
+      flex-wrap: nowrap;
+      flex-direction: row;
       form {
-        width: 70%;
+        width: 59%;
+
         .custom-text-area {
           height: 4rem;
           overflow-y: scroll;
         }
+
         input[type="text"],
         textarea {
           width: 70%;
         }
       }
     }
+
     #question-holder {
       width: 32%;
       height: 100%;
@@ -60,31 +65,37 @@
         padding: 2px;
       }
     }
+
     #answer-holder {
       height: 100%;
-      width: 30%;
+      width: 40%;
       max-height: 20rem;
       overflow-y: auto;
-      overflow-x: hidden;
-      .answer-label {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+
+      div {
         width: 100%;
-        margin: 4px 4px;
-        padding: 15px 7px;
+        padding: 5px 7px;
+        border-radius: 5%;
+        margin: 0px;
+        &:hover {
+          background: #bbbbbb;
+        }
       }
-      .answer-checkbox {
-        margin: 15px 7px;
+      label {
+        flex-wrap: nowrap;
       }
-    }
-    .submit-button-holder {
-      margin: 25px 7px;
     }
   }
+
   #auth {
     grid-area: A;
     display: flex;
     font-size: 1.5rem;
     background: #eee;
     color: black;
+
     align-items: center;
     justify-content: center;
     &:hover {
