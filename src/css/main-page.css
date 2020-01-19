@@ -27,6 +27,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-width: 19.5rem;
 }
 
 #main-page-controller #make-quiz {
@@ -36,6 +37,25 @@
   -ms-grid-column-span: 2;
   grid-area: M;
   color: black;
+}
+
+#main-page-controller #make-quiz .question-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
 }
 
 #main-page-controller #make-quiz #question-adding {
@@ -182,12 +202,45 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 850px) {
   #main-page-controller {
     min-width: 350px;
-        grid-template-areas: "H" "A" "M" "S";
+        grid-template-areas: "H" "A" "S" "M";
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+  #main-page-controller #header {
+    height: 220px;
+  }
+  #main-page-controller #make-quiz {
+    width: 100%;
+  }
+  #main-page-controller #make-quiz .question-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  #main-page-controller #make-quiz .question-form #question-holder,
+  #main-page-controller #make-quiz .question-form #question-adding {
+    width: 100%;
+  }
+  #main-page-controller #make-quiz .question-form #question-adding {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  #main-page-controller #make-quiz .question-form #question-adding form {
+    width: 100%;
+  }
+  #main-page-controller #make-quiz .question-form #question-adding form .custom-text-area,
+  #main-page-controller #make-quiz .question-form #question-adding form input[type="text"] {
+    width: 95%;
   }
 }
 

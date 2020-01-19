@@ -23,7 +23,7 @@ export class QuizMaker extends Component {
             <title>Make a Quiz</title>
           </Helmet>
           <div className='jumbotron flex-column align-items-center d-flex h-100'>
-            <div className='row h-100 space-between align-items-center w-100'>
+            <div className='question-form'>
               <div id='question-holder'>
                 {this.props.questions
                   .filter((question, i) => i > this.props.questions.length - 2)
