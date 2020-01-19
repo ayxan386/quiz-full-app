@@ -42,19 +42,14 @@ class App extends React.Component {
         <Helmet>
           <title>Test Page</title>
         </Helmet>
-        <div className='App row'>
-          <div className='main-area jumbotron col-8 min-width'>
+        <div className='App'>
+          <div className='main-area jumbotron min-width'>
             <div className='question-container min-width'>
-              {this.props.isLoaded ? (
-                <Question question_text={current_question.question}></Question>
-              ) : (
-                <div
-                  style={{
-                    width: "45rem",
-                    height: "10rem",
-                    background: "red"
-                  }}></div>
-              )}
+              <Question
+                question_text={
+                  current_question ? current_question.question : null
+                }
+                isLoaded={this.props.isLoaded}></Question>
             </div>
 
             <div className='answers-container'>
