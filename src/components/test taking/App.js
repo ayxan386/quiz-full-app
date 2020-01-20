@@ -13,7 +13,7 @@ import {
   submitAnswer
 } from "../../reducers/reducerActions";
 import { checkTempAuthFrom } from "../../middlewares/IsAuth";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
 class App extends React.Component {
   componentDidMount() {
@@ -28,6 +28,10 @@ class App extends React.Component {
       .substring(url.indexOf("/tt/") + "/tt/".length)
       .split("/");
     return (params && params[0]) || "";
+  };
+
+  goToResults = () => {
+    this.props.history.push(`/results/${this.getSubject()}`);
   };
 
   render() {
@@ -83,7 +87,10 @@ class App extends React.Component {
                 buttonClass='arrow right-arrow'></ChangeButton>
             </div>
             <SubmitButton
-              submitFunc={() => this.props.submitAnss()}></SubmitButton>
+              submitFunc={() => {
+                this.props.submitAnss();
+                this.goToResults();
+              }}></SubmitButton>
           </div>
         </div>
       </>
@@ -112,4 +119,4 @@ const mapDispathcToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispathcToProps)(App);
+export default connect(mapStateToProps, mapDispathcToProps)(withRouter(App));
