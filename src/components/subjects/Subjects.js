@@ -12,14 +12,17 @@ export class Subjects extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.subjects.map((subject, i) => {
-          return (
-            <Link key={i} to={`/ss/${subject}`}>
-              <div>{subject}</div>
-            </Link>
-          );
-        })}
+      <div className='grid-2-rows'>
+        <div id='subjects-header'>Your Quizes</div>
+        <div>
+          {this.props.subjects.map((subject, i) => {
+            return (
+              <Link key={i} to={`/ss/${subject}`}>
+                <div>{subject}</div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     );
   }

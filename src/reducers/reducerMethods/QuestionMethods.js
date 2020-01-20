@@ -51,11 +51,16 @@ export function postQuestions() {
   return (dispatch, getState) => {
     const { questions } = getState().maker;
     const subject = randomSubject();
-    Axios.post(`https://${source}/api/subject`, subject, {
-      headers: {
-        Authorization: getState().auth.token
+    Axios.post(
+      `https://${source}/api/subject`,
+      { subject },
+      {
+        headers: {
+          Authorization: getState().auth.token
+        }
       }
-    }).then(data => {
+    ).then(data => {
+      console.log("subject added " + subject);
       questions.forEach(question => {
         question.subject = subject;
         Axios.post(`https://${source}/api/question`, question, {

@@ -16,6 +16,13 @@
     justify-content: center;
     min-width: 19.5rem;
     min-height: 700px;
+    border-radius: 4px;
+    #subjects-header {
+      font-size: 32px;
+      color: #252225;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      padding: 12px 0;
+    }
   }
 
   #make-quiz {
@@ -36,6 +43,7 @@
       height: 100%;
       width: 60%;
       border: 1px solid #dedede;
+
       .nowrap-row {
         flex-wrap: nowrap;
         flex-direction: row;
@@ -44,7 +52,7 @@
         width: 59%;
 
         .custom-text-area {
-          height: 4rem;
+          height: 9rem;
           overflow-y: scroll;
         }
 
@@ -197,4 +205,11 @@
 
 .text-align-center {
   text-align: center;
+}
+
+.grid-2-rows {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 15% 85%;
+  justify-items: center;
 }
