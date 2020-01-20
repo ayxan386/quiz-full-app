@@ -39,6 +39,11 @@
   padding: 12px 0;
 }
 
+#main-page-controller #my-subjects #subject-holder {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 #main-page-controller #make-quiz {
   -ms-grid-row: 2;
   -ms-grid-row-span: 3;

@@ -14,7 +14,7 @@ export class Subjects extends Component {
     return (
       <div className='grid-2-rows'>
         <div id='subjects-header'>Your Quizes</div>
-        <div>
+        <div id='subject-holder'>
           {this.props.subjects.map((subject, i) => {
             return (
               <Link key={i} to={`/ss/${subject}`}>

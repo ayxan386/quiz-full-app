@@ -17,11 +17,16 @@
     min-width: 19.5rem;
     min-height: 700px;
     border-radius: 4px;
+
     #subjects-header {
       font-size: 32px;
       color: #252225;
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
       padding: 12px 0;
+    }
+    #subject-holder {
+      overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 
