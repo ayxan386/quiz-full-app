@@ -8,6 +8,7 @@ import "./css/main.css";
 import "./css/spinner-loader.css";
 import "./css/main-page.css";
 import "./css/form.css";
+import "./css/results.css";
 import "./css/bootstrap.min.css";
 import { PersistGate } from "redux-persist/integration/react";
 

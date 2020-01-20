@@ -6,6 +6,7 @@ import Login from "./auth/Login";
 import MainPage from "./MainPage";
 import TempAccount from "./auth/TempAccount";
 import StartPage from "./test taking/StartPage";
+import ResultsPage from "./results/ResultsPage";
 
 export class MyRouter extends Component {
   render() {
@@ -28,6 +29,9 @@ export class MyRouter extends Component {
         </Route>
         <Route path='/temp/form**'>
           <TempAccount></TempAccount>
+        </Route>
+        <Route path='/results**'>
+          <ResultsPage></ResultsPage>
         </Route>
       </Switch>
     );
