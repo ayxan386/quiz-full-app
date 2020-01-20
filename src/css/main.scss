@@ -47,11 +47,13 @@ html,
       grid-template-columns: 20% 60% 20%;
       justify-items: center;
       align-items: center;
-
+      max-height: 380px;
       .answers-holder {
         width: 100%;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
         .answer-label {
           display: block;
           align-self: flex-start;
