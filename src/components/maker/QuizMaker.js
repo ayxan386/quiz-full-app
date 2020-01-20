@@ -22,7 +22,10 @@ export class QuizMaker extends Component {
           <Helmet>
             <title>Make a Quiz</title>
           </Helmet>
-          <div className='jumbotron flex-column align-items-center d-flex h-100'>
+          <div className='quizholder flex-column align-items-center d-flex h-100'>
+            <div>
+              <h1 id='maker-header'>Make Your Own Quiz</h1>
+            </div>
             <div className='question-form'>
               <div id='question-holder'>
                 {this.props.questions
