@@ -59,6 +59,7 @@
         .custom-text-area {
           height: 9rem;
           overflow-y: scroll;
+          resize: both;
         }
 
         input[type="text"],
