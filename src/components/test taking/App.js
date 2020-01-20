@@ -43,7 +43,7 @@ class App extends React.Component {
           <title>Test Page</title>
         </Helmet>
         <div className='App'>
-          <div className='main-area jumbotron min-width'>
+          <div className='main-area min-width'>
             <div className='question-container min-width'>
               <Question
                 question_text={
@@ -84,7 +84,6 @@ class App extends React.Component {
             </div>
             <SubmitButton
               submitFunc={() => this.props.submitAnss()}></SubmitButton>
-            <h1>{this.props.result}</h1>
           </div>
         </div>
       </>

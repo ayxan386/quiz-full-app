@@ -14,12 +14,12 @@ html,
   .main-area {
     display: flex;
     align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: column;
     height: 80%;
+    min-height: 630px;
 
+    background: #ededed;
     border: 1px black solid;
     border-radius: 5px;
     margin: auto;
@@ -27,9 +27,10 @@ html,
 
     .question-container {
       color: #000;
+      width: 100%;
       .question-header {
         background-color: #d1d1d1;
-        padding: 4rem 7rem;
+        padding: 4rem 5.5rem;
         width: 100%;
 
         border: 1px solid #d0d0d0;
