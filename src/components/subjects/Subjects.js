@@ -17,14 +17,14 @@ export class Subjects extends Component {
         <div id='subject-holder'>
           {this.props.subjects.map((subject, i) => {
             return (
-              <div className='row'>
+              <div className='row' key={i}>
                 <button
                   onClick={() => {
                     this.props.activeLink(subject);
                   }}>
                   <i class='fas fa-share-square'></i>
                 </button>
-                <Link key={i} to={`/ss/${subject}`}>
+                <Link to={`/ss/${subject}`}>
                   <div>{subject}</div>
                 </Link>
               </div>
