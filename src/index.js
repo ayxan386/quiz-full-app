@@ -10,6 +10,7 @@ import "./css/main-page.css";
 import "./css/form.css";
 import "./css/results.css";
 import "./css/bootstrap.min.css";
+import "./css/LinkCopy/linkcopier.css";
 import { PersistGate } from "redux-persist/integration/react";
 
 const { store, persistor } = storer();

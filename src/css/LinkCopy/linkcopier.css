@@ -1,0 +1,53 @@
+#copy {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#copy .link-copier {
+  margin: auto;
+  border: 4px black solid;
+  border-radius: 10px;
+  width: 50%;
+  height: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: black;
+  font-weight: bold;
+  background: #fff;
+}
+
+#copy .link-copier input {
+  width: 25rem;
+  overflow-x: auto;
+}
+
+#copy .exit {
+  position: absolute;
+  float: right;
+  font-size: 48px;
+  color: black;
+  top: 0;
+  padding: 5px;
+  right: 30px;
+  cursor: pointer;
+}
+
+#copy .exit:hover {
+  color: #777;
+}
+/*# sourceMappingURL=linkcopier.css.map */
