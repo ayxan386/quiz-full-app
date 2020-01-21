@@ -78,13 +78,14 @@
       }
 
       #question-holder {
-        width: 32%;
-        height: 100%;
-        padding: 5px 8px;
-        background: #ededed;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        width: 32%;
+        height: 100%;
+        min-height: 250px;
+        padding: 5px 8px;
+        background: #ededed;
         border: 1px solid #dedede;
       }
 
