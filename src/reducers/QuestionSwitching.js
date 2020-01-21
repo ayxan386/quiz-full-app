@@ -49,7 +49,6 @@ const swtich_reducer = (state = init_state, action) => {
       });
     case SHOW_LOADER:
       return Object.assign({}, state, { isLoaded: false });
-
     case ERASE:
       return Object.assign({}, state, init_state);
     default:

@@ -1,5 +1,5 @@
 import { show_loader, results_received } from "../reducerActions";
-import { CLEAR_QUESTION } from "../reducer-consts";
+import { CLEAR_QUESTION, ERASE } from "../reducer-consts";
 import Axios from "axios";
 
 import { source } from "../reducerActions";
@@ -26,6 +26,7 @@ export function postAnswers() {
         }
       }
     ).then(res => {
+      dispatch(clear_answers());
       dispatch(results_received(res.data));
     });
   };
@@ -73,3 +74,9 @@ export function postQuestions() {
     });
   };
 }
+
+export const clear_answers = () => {
+  return {
+    type: ERASE
+  };
+};
