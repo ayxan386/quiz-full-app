@@ -18,7 +18,7 @@ export class MainPage extends Component {
     const patt = "/index";
     const url = window.location.href;
     this.setState({
-      urlToCopy: `${url.substring(0, url.indexOf(patt))}/${subjectName}`,
+      urlToCopy: `${url.substring(0, url.indexOf(patt))}/tt/${subjectName}`,
       showCopy: true
     });
   };

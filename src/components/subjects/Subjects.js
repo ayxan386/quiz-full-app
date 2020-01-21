@@ -22,7 +22,7 @@ export class Subjects extends Component {
                   onClick={() => {
                     this.props.activeLink(subject);
                   }}>
-                  <i class='fas fa-share-square'></i>
+                  <i className='fas fa-share-square'></i>
                 </button>
                 <Link to={`/ss/${subject}`}>
                   <div>{subject}</div>
