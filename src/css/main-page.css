@@ -177,6 +177,7 @@
   font-size: 1.5rem;
   background: #eee;
   color: black;
+  width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -207,6 +208,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
 }
 
 #main-page-controller .input-group {
@@ -225,9 +227,9 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1080px) {
   #main-page-controller {
-    min-width: 350px;
+    max-width: 95%;
         grid-template-areas: "H" "A" "S" "M";
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -264,6 +266,14 @@
   #main-page-controller #make-quiz .question-form #question-adding form .custom-text-area,
   #main-page-controller #make-quiz .question-form #question-adding form input[type="text"] {
     width: 95%;
+  }
+}
+
+@media (max-width: 400px) {
+  #main-page-controller {
+    max-width: 300px;
+    min-width: 300px;
+    width: 300px;
   }
 }
 
