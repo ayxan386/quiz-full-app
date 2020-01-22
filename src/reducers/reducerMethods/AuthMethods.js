@@ -7,7 +7,8 @@ export function login(username, password) {
   return dispatch => {
     Axios.post(`https://${source}/login`, {
       name: username,
-      pass: password
+      pass: password,
+      isRemember: true
     }).then(data => {
       if (data.data.message.includes("logged in")) {
         dispatch({

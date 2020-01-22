@@ -6,6 +6,7 @@ html,
   background-image: url("../imgs/backgroud.png");
   padding: 0;
   margin: 0;
+  font-family: sans-serif;
 }
 .App {
   display: flex;
@@ -16,7 +17,9 @@ html,
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    height: 80%;
+
+    min-height: 80%;
+    height: auto;
     min-height: 630px;
 
     background: #ededed;
@@ -37,8 +40,7 @@ html,
         border-radius: 2%;
 
         text-align: center;
-        font-size: 32px;
-        font-family: "Scope One";
+        font-size: 2em;
       }
     }
     .answers-container {
@@ -59,14 +61,14 @@ html,
           align-self: flex-start;
           justify-self: start;
           padding: 10px 4px;
-          margin: 12px 7px;
+          margin: 8px 7px;
           width: 100%;
           // max-width: 520px;
           min-width: 11rem;
           user-select: none;
 
           color: #000;
-          font-size: 22px;
+          font-size: 1.5em;
           &:hover {
             background: #e1e1e1;
           }
@@ -113,10 +115,30 @@ html,
 @media (min-width: 1080px) {
   .main-area {
     width: 1300px;
+    font-size: 18px;
   }
 }
 @media (max-width: 1080px) {
   .main-area {
-    width: 650px;
+    width: 550px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 540px) {
+    .main-area {
+      width: 300px;
+      font-size: 10px;
+      .arrow {
+        border-width: 0 7px 7px 0;
+        padding: 20px;
+        position: relative;
+      }
+      .left-arrow {
+        right: 35px;
+      }
+      .right-arrow {
+        left: 35px;
+      }
+    }
   }
 }
