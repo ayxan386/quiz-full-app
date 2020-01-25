@@ -5,6 +5,7 @@ import { login_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { checkAuthFrom } from "../../middlewares/IsAuth";
+import SocialAuth from "./SocialAuth";
 
 export class Login extends Component {
   constructor(props) {
@@ -28,6 +29,10 @@ export class Login extends Component {
 
     this.props.login(name, password);
     e.target.reset();
+  };
+
+  callback = (name, email, password) => {
+    this.props.login(name, password);
   };
 
   render() {
@@ -61,6 +66,9 @@ export class Login extends Component {
                   <button type='submit' className='btn btn-primary'>
                     LOGIN
                   </button>
+                  <span>
+                    <SocialAuth callback={this.callback}></SocialAuth>
+                  </span>
                 </div>
                 {this.props.err.length > 0 ? (
                   <div>

@@ -3,7 +3,6 @@ import GoogleLogin from "react-google-login";
 
 export class GoogleAuth extends Component {
   mapResToCallBack = res => {
-    console.log(res);
     const { name, email, googleId } = res.profileObj;
     this.props.callback(name, email, googleId);
   };
