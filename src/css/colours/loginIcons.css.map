@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,WAAW;EACvB,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,CAAC;CACX",
+    "sources": [
+        "loginIcons.scss"
+    ],
+    "names": [],
+    "file": "loginIcons.css"
+}

@@ -7,6 +7,7 @@ import MainPage from "./MainPage";
 import TempAccount from "./auth/TempAccount";
 import StartPage from "./test taking/StartPage";
 import ResultsPage from "./results/ResultsPage";
+import MakeQuestion from "./GitHubTest";
 
 export class MyRouter extends Component {
   render() {
@@ -18,8 +19,10 @@ export class MyRouter extends Component {
         <Route path='/register**'>
           <Register></Register>
         </Route>
-        <Route path='/login**'>
-          <Login></Login>
+        <Route path='/login'>
+          <Route path='/'>
+            <Login></Login>
+          </Route>
         </Route>
         <Route path='/ss**'>
           <StartPage></StartPage>
@@ -32,6 +35,9 @@ export class MyRouter extends Component {
         </Route>
         <Route path='/results**'>
           <ResultsPage></ResultsPage>
+        </Route>
+        <Route path='/testpage'>
+          <MakeQuestion></MakeQuestion>
         </Route>
       </Switch>
     );
