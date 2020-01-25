@@ -2,22 +2,21 @@ import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 export class FacebookAuth extends Component {
-  responseFacebook = res => {
-    console.log(res);
+  mapResToCallBack = res => {
+    this.props.callback(res.name, res.email, res.id);
   };
-
   render() {
     return (
       <span>
         <FacebookLogin
           appId='680916339111061'
-          callback={this.responseFacebook}
+          callback={this.mapResToCallBack}
           autoLoad={false}
           fields='name,email,picture'
           render={renderProps => (
-            <button onClick={renderProps.onClick} className='facebook'>
-              <i className='fab fa-facebook-square'></i>
-            </button>
+            <i
+              className='fab fa-facebook-square facebook'
+              onClick={renderProps.onClick}></i>
           )}
         />
       </span>

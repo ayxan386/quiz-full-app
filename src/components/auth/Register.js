@@ -3,6 +3,7 @@ import "../../css/form.css";
 import Helmet from "react-helmet";
 import { register_user } from "../../reducers/reducerActions";
 import { connect } from "react-redux";
+import SocialAuth from "./SocialAuth";
 
 export class Register extends Component {
   constructor(props) {
@@ -51,11 +52,16 @@ export class Register extends Component {
     });
   };
 
-  sendData = e => {
+  register = e => {
     e.preventDefault();
     const { name, password, email } = this.state;
     this.props.register(name, email, password, true);
   };
+
+  callbackForSocial = (name, email, password) => {
+    this.props.register(name, email, password, true);
+  };
+
   checkToken = () => {
     return this.props.token && this.props.token.length > 0;
   };
@@ -69,7 +75,7 @@ export class Register extends Component {
           </Helmet>
           <div className='d-flex justify-content-center h-auto p-4'>
             <div className='jumbotron w-25 min-width'>
-              <form onSubmit={this.sendData}>
+              <form onSubmit={this.register}>
                 <legend className='p-3'>User information</legend>
                 <div className='form-group'>
                   <label htmlFor='name'>Name: </label>
@@ -103,9 +109,13 @@ export class Register extends Component {
                     onChange={this.updateMe}
                     className={`form-control ${this.state.isMathcing}`}></input>
                 </div>
-                <button type='submit' className='btn btn-primary'>
-                  Register
-                </button>
+                <div className='row'>
+                  <button type='submit' className='btn btn-primary'>
+                    Register
+                  </button>
+                  <h5>Or</h5>
+                  <SocialAuth callback={this.callbackForSocial}></SocialAuth>
+                </div>
               </form>
             </div>
           </div>
