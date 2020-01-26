@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { register_temp } from "../../reducers/reducerMethods/AuthMethods";
 import { checkTempAuthFrom } from "../../middlewares/IsAuth";
+import SocialAuth from "./SocialAuth";
 
 export class TempAccount extends Component {
   constructor(props) {
@@ -36,6 +37,10 @@ export class TempAccount extends Component {
         <p className=''>{this.props.err}</p>
       </div>
     ) : null;
+  };
+
+  callback = (name, email, password) => {
+    this.props.login(name, email);
   };
 
   getSubject = () => {
@@ -77,6 +82,9 @@ export class TempAccount extends Component {
                 <button type='submit' className='btn btn-primary'>
                   Take Test
                 </button>
+                <span>
+                  <SocialAuth callback={this.callback}></SocialAuth>
+                </span>
               </div>
               {this.displayError()}
             </form>
